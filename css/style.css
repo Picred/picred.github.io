@@ -1,0 +1,55 @@
+body {
+    font-family: sans-serif;
+    background-image: linear-gradient(to bottom, #000, #fff, #888);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+  
+header {
+color: white;
+padding: 20px;
+}
+
+h1 {
+font-size: 2em;
+}
+
+p {
+font-size: 5.5em;
+}
+
+.portfolio {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.portfolio article {
+width: 25%;
+margin: 10px;
+}
+
+.portfolio article img {
+    width: 100px;
+    height: 100px;
+}
+
+.portfolio article h2 {
+font-size: 1.5em;
+}
+
+.portfolio article p {
+font-size: 1em;
+}
+
+.contatti {
+padding: 20px;
+}
+
+.contatti h2 {
+font-size: 1.5em;
+}
+
+.contatti p {
+font-size: 1em;
+}
