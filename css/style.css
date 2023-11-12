@@ -3,11 +3,18 @@ body {
     background-image: linear-gradient(to bottom, #000, #fff, #888);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    height: 10000px; /* Used to enable scrolling */
+    /* background: linear-gradient(55deg, #000000 0%, #ffffff 51%, #888888 85%); */
 }
   
-header {
-color: white;
-padding: 20px;
+header img{
+    text-align: center;
+    width: 200px;
+    height: 200px;
+}
+
+div {
+    text-align: center;
 }
 
 h1 {
@@ -15,41 +22,28 @@ font-size: 2em;
 }
 
 p {
-font-size: 5.5em;
+    font-size: 5.5em;
 }
 
-.portfolio {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.portfolio article {
-width: 25%;
-margin: 10px;
+
+.contacts article {
+    width: 25%;
+    margin: 10px;
 }
 
-.portfolio article img {
-    width: 100px;
-    height: 100px;
+.contacts article img {
+    width: 80px;
+    height: 80px;
 }
 
-.portfolio article h2 {
-font-size: 1.5em;
+.contacts article h2 {
+    font-size: 1.5em;
+    text-align: center;
 }
 
-.portfolio article p {
-font-size: 1em;
-}
-
-.contatti {
-padding: 20px;
-}
-
-.contatti h2 {
-font-size: 1.5em;
-}
-
-.contatti p {
-font-size: 1em;
-}
