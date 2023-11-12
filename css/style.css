@@ -3,26 +3,13 @@ body {
     background-image: linear-gradient(to bottom, #000, #fff, #888);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 10000px; /* Used to enable scrolling */
-    /* background: linear-gradient(55deg, #000000 0%, #ffffff 51%, #888888 85%); */
+    height: 1000px; /* Used to enable scrolling */
+    background: linear-gradient(55deg, #000000 0%, #ffffff 51%, #888888 85%);
 }
   
 header img{
-    text-align: center;
     width: 200px;
     height: 200px;
-}
-
-div {
-    text-align: center;
-}
-
-h1 {
-font-size: 2em;
-}
-
-p {
-    font-size: 5.5em;
 }
 
 .contacts {
@@ -31,10 +18,10 @@ p {
     justify-content: center;
 }
 
-
 .contacts article {
     width: 25%;
     margin: 10px;
+    text-align: center;
 }
 
 .contacts article img {
@@ -46,4 +33,3 @@ p {
     font-size: 1.5em;
     text-align: center;
 }
-
