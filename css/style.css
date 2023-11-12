@@ -3,33 +3,38 @@ body {
     background-image: linear-gradient(to bottom, #000, #fff, #888);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 1000px; /* Used to enable scrolling */
-    background: linear-gradient(55deg, #000000 0%, #ffffff 51%, #888888 85%);
 }
   
 header img{
     width: 200px;
     height: 200px;
+    position: fixed;
 }
 
 .contacts {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    position: fixed;
+    bottom: 0%;
+
 }
 
 .contacts article {
-    width: 25%;
-    margin: 10px;
+    width: 20%;
+    margin: 15px;
     text-align: center;
 }
 
 .contacts article img {
-    width: 80px;
-    height: 80px;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+
 }
 
 .contacts article h2 {
-    font-size: 1.5em;
+    font-size: 15px;
+    margin-top: auto;
     text-align: center;
 }
