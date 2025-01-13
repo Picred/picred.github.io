@@ -2,28 +2,32 @@ import React from "react";
 
 export const Hero = () => {
   return (
-    <div className="hero bg-transparent min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero bg-transparent min-h-screen px-4 lg:px-12">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-8 lg:gap-12">
         <img
-          src="https://pics.craiyon.com/2023-10-03/c64134a721434b048ae228cc6a16643e.webp"
-          className="max-w-sm rounded-lg shadow-2xl"
+          src="/propic.jpg"
+          className="w-64 h-64 lg:w-96 lg:h-96 rounded-3xl shadow-2xl object-cover"
+          alt="Profile"
         />
-        <div>
-          <h1 className="text-7xl font-extralight text-clip">Andrei Stefan</h1>
-          <p className="py-8 overflow-hidden">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore
-            doloremque eum nostrum aliquid nihil facere similique veniam
-            ratione, accusamus ex. Eum nostrum quam iusto sapiente eligendi
-            pariatur expedita, qui corrupti, voluptate explicabo eius placeat
-            non illo odit voluptas aspernatur iste numquam accusamus!
-          </p>
-          <button className="btn btn-primary mr-5">
-            <p className="text-primary-content">Contact Me!</p>
-          </button>
 
-          <button className="btn btn-neutral">
-            <p className="text-neutral-content">Browse Projects!</p>
-          </button>
+        <div className="flex flex-col items-start text-center lg:text-left border border-yellow-300 w-full lg:w-1/2 p-4 lg:p-8">
+          <p className="text-info text-lg lg:text-xl mb-2">Hi, my name is</p>
+          <h1 className="text-5xl lg:text-8xl font-light text-white mb-4">
+            Andrei Stefan
+          </h1>
+          <p className="text-2xl lg:text-4xl py-4 overflow-hidden">
+            Computer Science student.
+          </p>
+
+          <div className="flex flex-col lg:flex-row gap-4 mt-4">
+            <button className="btn btn-primary w-full lg:w-auto">
+              <p className="text-primary-content">Contact Me! </p>
+            </button>
+
+            <button className="btn btn-neutral w-full lg:w-auto">
+              <p className="text-neutral-content">Browse Projects!</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
