@@ -1,4 +1,3 @@
-import React from "react";
 import { useStore } from "zustand";
 import { infoStore } from "../store/infoStore";
 import { ThemeSwitcher } from "./ThemeSwitcher";

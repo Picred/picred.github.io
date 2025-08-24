@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Hero = () => {
     return (
         <div className="hero bg-transparent min-h-screen px-4 lg:px-12">

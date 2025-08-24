@@ -1,7 +1,5 @@
-import React from "react";
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
-import { useEffect } from "react";
 import { useStore } from "zustand";
 import { infoStore } from "../store/infoStore";
 
