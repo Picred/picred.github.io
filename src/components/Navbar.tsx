@@ -1,9 +1,9 @@
-import { useStore } from "zustand";
-import { infoStore } from "../store/infoStore";
+// import { useStore } from "zustand";
+// import { infoStore } from "../store/infoStore";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export const Navbar = () => {
-    const info = useStore(infoStore);
+    // const info = useStore(infoStore);
 
     return (
         <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-base-100 backdrop-blur-md flex items-end justify-between shadow-md">

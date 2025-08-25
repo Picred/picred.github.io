@@ -6,7 +6,7 @@ interface InfoStore{
     update(newTab?:string, newTheme?:string): void,
 }
 
-export const infoStore = create<InfoStore>((set, get) => ({
+export const infoStore = create<InfoStore>((set) => ({
     active: "",
     theme: "",
 
