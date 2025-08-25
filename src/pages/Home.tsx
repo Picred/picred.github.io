@@ -7,7 +7,6 @@ export const Home = () => {
     const info = useStore(infoStore);
 
     return (
-        // <div className="absolute top-0 z-[-2] min-h-screen w-screen bg-primary">
         <div className="bg-base-300">
         <Navbar />
         <Hero />
