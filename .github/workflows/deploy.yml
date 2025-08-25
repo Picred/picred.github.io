@@ -3,6 +3,11 @@ name: Deploy static content to Pages
 on:
   push:
     branches: ['main']
+    paths:
+      - "src/**"
+      - "vite.config.js"
+      - "package.json"
+      - "package-lock.json"
 
   workflow_dispatch:
 
