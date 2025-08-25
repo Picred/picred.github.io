@@ -8,7 +8,7 @@ export const Home = () => {
 
     return (
         // <div className="absolute top-0 z-[-2] min-h-screen w-screen bg-primary">
-        <div className="bg-base-200">
+        <div className="bg-base-300">
         <Navbar />
         <Hero />
         </div>
