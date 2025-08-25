@@ -12,7 +12,7 @@ export const Hero = () => {
                     <div className="mt-20 lg:mt-32"> 
                         <p className="text-lg lg:text-3xl mb-2">Hi, my name is</p>
 
-                        <h1 className="text-3xl lg:text-6xl font-bold mb-6 lg:mb-8"> 
+                        <h1 className="text-3xl lg:text-6xl font-bold mb-6 lg:mb-8 text-secondary"> 
                             Andrei Stefan
                         </h1>
 

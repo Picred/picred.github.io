@@ -1,5 +1,6 @@
 import { Navbar } from "../components/Navbar";
 import { Hero } from "../components/Hero";
+import { Footer } from "../components/Footer";
 // import { useStore } from "zustand";
 // import { infoStore } from "../store/infoStore";
 
@@ -8,8 +9,10 @@ export const Home = () => {
 
     return (
         <div className="bg-base-300">
-        <Navbar />
-        <Hero />
+            <Navbar />
+            <Hero />
+            <Footer />
         </div>
+
     );
 };

@@ -6,7 +6,7 @@ export const Navbar = () => {
     // const info = useStore(infoStore);
 
     return (
-        <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-base-100 backdrop-blur-md flex items-end justify-between shadow-md">
+        <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-neutral backdrop-blur-md flex items-end justify-between shadow-md">
             <button className="btn btn-ghost text-4xl lg:text-5xl text-secondary">
                 AS.
             </button>
