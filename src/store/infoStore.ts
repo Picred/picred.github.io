@@ -1,17 +1,17 @@
 import { create } from  "zustand";
 
 interface InfoStore{
-    active: string;
+    activeTab: string;
     theme: string;
     update(newTab?:string, newTheme?:string): void,
 }
 
 export const infoStore = create<InfoStore>((set) => ({
-    active: "",
+    activeTab: "",
     theme: "",
 
     update: (newTab?:string, newTheme?:string) => {
-        newTab ? set({active: newTab,}) : null;
+        newTab ? set({activeTab: newTab,}) : null;
         newTheme ? set({theme: newTheme,}) : null;
     }
 }));
