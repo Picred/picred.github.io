@@ -1,10 +1,12 @@
 import { ProjectType } from "../types/ProjectType";
 
-export const ProjectCard = ({ title, description, techStack, link }: ProjectType) => {
+export const ProjectCard = ({ title, description, techStack, link, imgUrl}: ProjectType) => {
   return (
     <div className="card bg-neutral text-neutral-content w-full lg:w-96 flex flex-col">
       <div className="card-body">
         <h2 className="card-title text-lg lg:text-xl font-bold">{title}</h2>
+
+        {imgUrl != "" && (<img src={imgUrl} />)}
 
         <p className="text-sm lg:text-base mt-2">{description}</p>
 

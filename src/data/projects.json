@@ -4,43 +4,71 @@
             "name": "Maze Navigation Problem [2025]",
             "description": "My thesis, 'Analysis of Optimal Navigation Strategies for Autonomous Exploration in Unknown Environments', studies how autonomous agents navigate mazes using strategies like Random Walk, Wall Follower, Tremaux, and Adaptive Walk. Simulations show Adaptive Walk excels in efficiency and success, with applications in robotics, autonomous vehicles, and multi-agent exploration systems.",
             "link": "https://github.com/Picred/maze-navigation",
-            "techStack": "Python, AI, Autonomous Agents, Numpy"
+            "techStack": "Python, AI, Autonomous Agents, Numpy",
+            "imgUrl": "" 
         },
         {
             "name": "Cineaura [2024]",
             "description": "A full-stack website for managing cinemas, featuring an authentication and booking system. The Cineaura website offers several features, including:\nUser Authentication for users/admins. Ticket Booking with selection of available movies (on DB) and showtimes.",
             "link": "https://github.com/Picred/cineaura",
-            "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL"
+            "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
+            "imgUrl": ""
+        },
+        {
+            "name": "Granimal [2024]",
+            "description": "Track all your favorite anime, all in one place. Granimal is a platform that allows you to keep track of all your favorite anime. You can also discover new ones and share your thoughts with other users.",
+            "link": "https://github.com/Picred/granimal",
+            "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
+            "imgUrl": "granimal.jpeg"
         },
         {
             "name": "Air Quality Monitor [2024]",
             "description": "Air Quality Monitor is a system that tracks real-time air pollution levels using APIs to measure parameters such as particulate matter, CO₂, and temperature. The data is collected, processed, and displayed on a user-friendly interface, providing insights into environmental conditions and enabling timely responses to maintain healthy air quality.",
             "link": "https://github.com/Picred/air-quality-monitor",
-            "techStack": "Python, Logstash, Kafka, Spark, Elasticsearch, Docker, Docker Compose"
+            "techStack": "Python, Logstash, Kafka, Spark, Elasticsearch, Docker, Docker Compose",
+            "imgUrl": ""
+        },
+        {
+            "name": "Linux Terminal Simulation [2024]",
+            "description": "University project web-based terminal built with HTML, CSS, and JavaScript. Features real-time clock, resizable and closable window, and basic commands like clear, whoami, curl, time, exit, help, and user (to change username). Designed to simulate a lightweight interactive terminal experience in the browser.",
+            "link": "https://github.com/Picred/linux-terminal-sim",
+            "techStack": "HTML, CSS, Javascript",
+            "imgUrl": "https://github.com/Picred/linux-terminal-sim/blob/main/screenshots/terminal.jpg?raw=true" 
+        },
+        {
+            "name": "Local Chat [2024]",
+            "description": "University project built with Express, Socket.IO, and npm. The app allows users to log in and see in real time who else is connected, enabling instant chat within the same network. Designed to demonstrate real-time communication and multi-user interaction.",
+            "link": "https://github.com/Picred/local-chat",
+            "techStack": "HTML, CSS, Javascript, Socket.IO, Npm, Express",
+            "imgUrl": "https://github.com/Picred/local-chat/blob/main/screenshots/chat.jpg?raw=true"
         },
         {
             "name": "Brain Test Quiz Bot [2023]",
             "description": "Brain Test Quiz Bot is a Telegram bot that challenges users' intelligence and cognitive skills through a variety of quizzes and puzzles. It covers grammar, logic, math, and general knowledge, offering three difficulty levels with timers: Easy (10s), Medium (7s), and Hard (5s), providing a fun and engaging learning experience.",
             "link": "https://github.com/Picred/brain-test-bot",
-            "techStack": "Python, Unit Tests"
+            "techStack": "Python, Unit Tests",
+            "imgUrl": ""
         },
         {
             "name": "Database Cinema System [2023]",
             "description": "Cinema Database System is designed to track cinema operations, including screening rooms, ticket and snack sales, staff shifts, and customer feedback. It ensures seat availability, manages sales transactions, updates snack pricing, and calculates daily revenue. The system also stores film details and aggregates anonymous reviews for informed movie selection.",
             "link": "https://github.com/Picred/cinema-database",
-            "techStack": "MySQL"
+            "techStack": "MySQL",
+            "imgUrl": ""
         },
         {
             "name": "Credit Card Number Checker [2022]",
             "description": "Luhn Algorithm Validator is a C++ program that generates and verifies credit card numbers using the Luhn algorithm. It validates user-input numbers, handles exceptions gracefully, and optionally creates random numbers to test correctness. This project demonstrates algorithm implementation, input validation, and practical error handling in C++.",
             "link": "https://github.com/Picred/ccn-check/tree/main",
-            "techStack": "C++"
+            "techStack": "C++",
+            "imgUrl": ""
         },
         {
             "name": "Hangman Game [2022]",
             "description": "Hangman Game is a Python-based interactive word-guessing game. Users try to reveal a hidden word by selecting letters, with a limited number of lives. The program handles input validation, dynamically updates the word display, and selects random words from a list, offering an engaging command-line gaming experience.",
             "link": "https://github.com/Picred/hangman-game",
-            "techStack": "Python"
+            "techStack": "Python",
+            "imgUrl": ""
         }
     ]
 }
