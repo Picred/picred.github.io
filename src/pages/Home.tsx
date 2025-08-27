@@ -1,6 +1,6 @@
 export const Home = () => {
     return (
-        <div className="hero bg-transparent min-h-screen px-4 lg:px-12 w-full h-full">
+        <div className="hero bg-transparent h-screen px-4 lg:px-12 w-full h-full">
             <div className="hero-content flex flex-col items-center gap-8">
 
                 <div className="relative flex flex-col text-center w-full max-w-3xl p-4 lg:p-10 bg-base-100 rounded-3xl">

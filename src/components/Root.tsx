@@ -6,18 +6,14 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
 export const Root = () => {
-    const { activeTab, update } = useStore(infoStore);
-    
-    useEffect(() => {
-        update("Home");
-        console.log(activeTab);
-    }, [activeTab]);
+    const { activeTab } = useStore(infoStore);
+
 
 
     return (
         <div className="bg-base-300">
             <Navbar/>
-            
+
             <Home/>
             
             <Footer/>

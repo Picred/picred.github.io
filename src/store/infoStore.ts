@@ -7,7 +7,7 @@ interface InfoStore{
 }
 
 export const infoStore = create<InfoStore>((set) => ({
-    activeTab: "",
+    activeTab: "Home",
     theme: "",
 
     update: (newTab?:string, newTheme?:string) => {

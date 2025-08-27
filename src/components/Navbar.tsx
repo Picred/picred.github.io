@@ -1,9 +1,15 @@
-// import { useStore } from "zustand";
-// import { infoStore } from "../store/infoStore";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { useStore } from "zustand";
+import { infoStore } from "../store/infoStore"
+import React from "react";
+
 
 export const Navbar = () => {
-    // const info = useStore(infoStore);
+    const { activeTab, update } = useStore(infoStore);
+
+    const handleChange = (tab: string) => {
+        update(tab);
+    };
 
     return (
         <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-neutral backdrop-blur-md flex items-end justify-between shadow-md">
@@ -13,19 +19,19 @@ export const Navbar = () => {
 
             {/* Desktop Tabs */}
             <div className="hidden lg:flex tabs tabs-bordered gap-4 items-center">
-                <p role="tab" className="tab tab-active text-sm lg:text-base text-secondary">01.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Home" ? "tab-active" : ""}`} onClick = {() => {handleChange("Home")}}>01.
                     <span className="text-primary">Home</span>
                 </p>
 
-                <p role="tab" className="tab text-sm lg:text-base text-secondary">02.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "About" ? "tab-active" : ""}`} onClick = {() => {handleChange("About")}}>02.
                     <span className="text-primary">About</span>
                 </p>
 
-                <p role="tab" className="tab text-sm lg:text-base text-secondary">03.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Projects" ? "tab-active" : ""}`} onClick = {() => {handleChange("Projects")}}>03.
                     <span className="text-primary">Projects</span>
                 </p>
 
-                <p role="tab" className="tab text-sm lg:text-base text-secondary">04.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Contact" ? "tab-active" : ""}`} onClick = {() => {handleChange("Contact")}}>04.
                     <span className="text-primary">Contact</span>
                 </p>
 
