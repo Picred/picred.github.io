@@ -1,7 +1,6 @@
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useStore } from "zustand";
 import { infoStore } from "../store/infoStore"
-import React from "react";
 
 
 export const Navbar = () => {
@@ -13,7 +12,7 @@ export const Navbar = () => {
 
     return (
         <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-neutral backdrop-blur-md flex items-end justify-between shadow-md">
-            <button className="btn btn-ghost text-4xl lg:text-5xl text-secondary">
+            <button className="btn btn-ghost text-4xl lg:text-5xl text-secondary" onClick = {() => {handleChange("Home")}}>
                 AS.
             </button>
 
@@ -54,25 +53,25 @@ export const Navbar = () => {
 
                         <li>
                             <span className="text-sm text-secondary">01.
-                                <span className="text-primary font-semibold">Home</span>
+                                <span className="text-primary font-semibold" onClick = {() => {handleChange("Home")}}>Home</span>
                             </span>
                         </li>
 
                         <li>
                             <span className="text-sm text-secondary">02.
-                                <span className="text-primary font-semibold">About</span>
+                                <span className="text-primary font-semibold" onClick = {() => {handleChange("About")}}>About</span>
                             </span>
                         </li>
 
                         <li>
                             <span className="text-sm text-secondary">03.
-                                <span className="text-primary font-semibold">Projects</span>
+                                <span className="text-primary font-semibold" onClick = {() => {handleChange("Projects")}}>Projects</span>
                             </span>
                         </li>
 
                         <li>
                             <span className="text-sm text-secondary">04.
-                                <span className="text-primary font-semibold">Contact</span>
+                                <span className="text-primary font-semibold" onClick = {() => {handleChange("Contact")}}>Contact</span>
                             </span>
                         </li>
 
