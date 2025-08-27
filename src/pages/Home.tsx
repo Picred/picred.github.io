@@ -1,6 +1,11 @@
+import { useStore } from "zustand";
+import { infoStore } from "../store/infoStore"
+
 export const Home = () => {
+    const { update } = useStore(infoStore);
+
     return (
-        <div className="hero bg-transparent h-screen px-4 lg:px-12 w-full h-full">
+        <div className="hero bg-transparent px-4 lg:px-12 w-full min-h-screen">
             <div className="hero-content flex flex-col items-center gap-8">
 
                 <div className="relative flex flex-col text-center w-full max-w-3xl p-4 lg:p-10 bg-base-100 rounded-3xl">
@@ -31,7 +36,7 @@ export const Home = () => {
                                 <p className="text-primary-content">Contact Me!</p>
                             </button>
 
-                            <button className="btn btn-primary w-full lg:w-auto">
+                            <button className="btn btn-primary w-full lg:w-auto" onClick={() => update("Projects")}>
                                 <p className="text-primary-content">Browse Projects!</p>
                             </button>
                         </div>

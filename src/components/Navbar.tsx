@@ -12,8 +12,8 @@ export const Navbar = () => {
 
     return (
         <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-neutral backdrop-blur-md flex items-end justify-between shadow-md">
-            <button className="btn btn-ghost text-4xl lg:text-5xl text-secondary" onClick = {() => {handleChange("Home")}}>
-                AS.
+            <button className="btn btn-outline btn-info text-4xl lg:text-5xl text-secondary" onClick = {() => {handleChange("Home")}}>
+                <p>AS.</p>
             </button>
 
             {/* Desktop Tabs */}
@@ -30,14 +30,15 @@ export const Navbar = () => {
                     <span className="text-primary">Projects</span>
                 </p>
 
-                <button className="text-primary font-semibold btn btn-ghost text-lg">👉 Resume</button>
+                <button className="text-primary font-semibold btn btn-outline btn-warning text-lg">Resume</button>
 
-                <ThemeSwitcher />
             </div>
+                
+            <ThemeSwitcher />
 
             {/* Mobile Dropdown */}
             <div className="flex flex-row lg:hidden">
-                <ThemeSwitcher />
+                {/* <ThemeSwitcher /> */}
 
                 <div className="lg:hidden dropdown dropdown-end z-50">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">

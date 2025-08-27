@@ -11,9 +11,10 @@ export const Root = () => {
 
 
     return (
-        <div className="bg-base-300">
+        <div className="bg-base-300 min-h-screen flex flex-col">
             <Navbar/>
 
+        <div className="flex-1">
             {activeTab == "Home" &&(
                 <Home/>
             )}
@@ -25,7 +26,7 @@ export const Root = () => {
             {activeTab == "Projects" &&(
                 <Projects/>
             )}
-            
+        </div>
             <Footer/>
         </div>
     )
