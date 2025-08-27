@@ -27,7 +27,7 @@ export const Home = () => {
                         </p>
 
                         <div className="flex flex-col lg:flex-row gap-4 mt-6 justify-center">
-                            <button className="btn btn-primary w-full lg:w-auto">
+                            <button className="btn btn-primary w-full lg:w-auto" onClick = {() => window.location.href = `mailto:andrei.stefand@outlook.com`}>
                                 <p className="text-primary-content">Contact Me!</p>
                             </button>
 

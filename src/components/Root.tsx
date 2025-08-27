@@ -1,10 +1,8 @@
 import { useStore } from "zustand";
 import { infoStore } from "../store/infoStore";
-// import { useEffect } from "react";
 import { Home } from "../pages/Home";
 import { About } from "../pages/About";
 import { Projects } from "../pages/Projects";
-import { Contact } from "../pages/Contact";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
@@ -26,10 +24,6 @@ export const Root = () => {
 
             {activeTab == "Projects" &&(
                 <Projects/>
-            )}
-
-            {activeTab == "Contact" &&(
-                <Contact/>
             )}
             
             <Footer/>

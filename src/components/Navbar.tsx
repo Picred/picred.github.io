@@ -30,11 +30,7 @@ export const Navbar = () => {
                     <span className="text-primary">Projects</span>
                 </p>
 
-                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Contact" ? "tab-active" : ""}`} onClick = {() => {handleChange("Contact")}}>04.
-                    <span className="text-primary">Contact</span>
-                </p>
-
-                <p className="text-primary font-semibold">👉 Resume</p>
+                <button className="text-primary font-semibold btn btn-ghost text-lg">👉 Resume</button>
 
                 <ThemeSwitcher />
             </div>
@@ -66,12 +62,6 @@ export const Navbar = () => {
                         <li>
                             <span className="text-sm text-secondary">03.
                                 <span className="text-primary font-semibold" onClick = {() => {handleChange("Projects")}}>Projects</span>
-                            </span>
-                        </li>
-
-                        <li>
-                            <span className="text-sm text-secondary">04.
-                                <span className="text-primary font-semibold" onClick = {() => {handleChange("Contact")}}>Contact</span>
                             </span>
                         </li>
 
