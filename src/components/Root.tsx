@@ -5,29 +5,41 @@ import { About } from "../pages/About";
 import { Projects } from "../pages/Projects";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { UnderConstruction } from "./UnderConstruction";
+import { useEffect, useState } from "react";
 
 export const Root = () => {
     const { activeTab } = useStore(infoStore);
 
+    const [ alert, setAlert ] = useState(true);
+
+    useEffect(() => {
+        setTimeout( () => {
+            setAlert(false);
+        }, 5000);
+    },[])
 
     return (
         <div className="bg-base-300 min-h-screen flex flex-col">
-            <Navbar/>
+            <Navbar />
 
-        <div className="flex-1">
-            {activeTab == "Home" &&(
-                <Home/>
-            )}
+            <div className="flex-1">
+                {activeTab == "Home" && (
+                    <Home />
+                )}
 
-            {activeTab == "About" &&(
-                <About/>
-            )}
+                {activeTab == "About" && (
+                    <About />
+                )}
 
-            {activeTab == "Projects" &&(
-                <Projects/>
-            )}
-        </div>
-            <Footer/>
+                {activeTab == "Projects" && (
+                    <Projects />
+                )}
+            </div>
+            <Footer />
+            
+            {alert && <UnderConstruction />}
+            
         </div>
     )
 }
