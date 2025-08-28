@@ -12,28 +12,31 @@ export const Navbar = () => {
 
     return (
         <nav className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-neutral backdrop-blur-md flex items-end justify-between shadow-md">
-            <button className="btn btn-outline btn-info text-4xl lg:text-5xl text-secondary" onClick = {() => {handleChange("Home")}}>
-                <p>AS</p>
-            </button>
+            <div className="flex items-center justify-center lg:justify-start" >
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full ring-2 ring-success ring-offset-2 ring-offset-base-100 overflow-hidden" >
+                    <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" onClick={() => {handleChange("Home")}}
+                    />
+                </div>
+            </div>
 
             {/* Desktop Tabs */}
             <div className="hidden lg:flex tabs tabs-bordered gap-4 items-center">
-                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Home" ? "tab-active" : ""}`} onClick = {() => {handleChange("Home")}}>01.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Home" ? "tab-active" : ""}`} onClick={() => { handleChange("Home") }}>01.
                     <span className="text-primary">Home</span>
                 </p>
 
-                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "About" ? "tab-active" : ""}`} onClick = {() => {handleChange("About")}}>02.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "About" ? "tab-active" : ""}`} onClick={() => { handleChange("About") }}>02.
                     <span className="text-primary">About</span>
                 </p>
 
-                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Projects" ? "tab-active" : ""}`} onClick = {() => {handleChange("Projects")}}>03.
+                <p role="tab" className={`tab text-sm lg:text-base text-secondary ${activeTab === "Projects" ? "tab-active" : ""}`} onClick={() => { handleChange("Projects") }}>03.
                     <span className="text-primary">Projects</span>
                 </p>
 
                 <button className="text-primary font-semibold btn btn-outline btn-warning text-lg">Resume</button>
 
             </div>
-                
+
             <ThemeSwitcher />
 
             {/* Mobile Dropdown */}
@@ -50,19 +53,19 @@ export const Navbar = () => {
 
                         <li>
                             <span className="text-sm text-secondary">01.
-                                <span className="text-primary font-semibold" onClick = {() => {handleChange("Home")}}>Home</span>
+                                <span className="text-primary font-semibold" onClick={() => { handleChange("Home") }}>Home</span>
                             </span>
                         </li>
 
                         <li>
                             <span className="text-sm text-secondary">02.
-                                <span className="text-primary font-semibold" onClick = {() => {handleChange("About")}}>About</span>
+                                <span className="text-primary font-semibold" onClick={() => { handleChange("About") }}>About</span>
                             </span>
                         </li>
 
                         <li>
                             <span className="text-sm text-secondary">03.
-                                <span className="text-primary font-semibold" onClick = {() => {handleChange("Projects")}}>Projects</span>
+                                <span className="text-primary font-semibold" onClick={() => { handleChange("Projects") }}>Projects</span>
                             </span>
                         </li>
 

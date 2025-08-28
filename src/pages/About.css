@@ -1,0 +1,47 @@
+.terminal-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: 100vh;
+    max-height: 500px;
+}
+
+.terminal-wrapper {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.react-terminal-wrapper {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.react-terminal {
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.react-terminal-line {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.react-terminal-welcome-message {
+    white-space: pre-wrap;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.react-terminal-input:before {
+    content: "";
+    margin-right: 5px;
+}
