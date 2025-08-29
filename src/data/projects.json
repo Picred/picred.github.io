@@ -26,7 +26,7 @@
             "description": "Air Quality Monitor is a system that tracks real-time air pollution levels using APIs to measure parameters such as particulate matter, CO₂, and temperature. The data is collected, processed, and displayed on a user-friendly interface, providing insights into environmental conditions and enabling timely responses to maintain healthy air quality.",
             "link": "https://github.com/Picred/air-quality-monitor",
             "techStack": "Python, Logstash, Kafka, Spark, Elasticsearch, Docker, Docker Compose",
-            "imgUrl": ""
+            "imgUrl": "aqm-dashboard.jpeg"
         },
         {
             "name": "Linux Terminal Simulation [2024]",
