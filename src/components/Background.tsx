@@ -2,26 +2,10 @@
 import { motion } from "framer-motion";
 import { useStore } from "zustand";
 import { infoStore } from "../store/infoStore";
-import { useEffect, useState } from "react";
 
 export const Background = () => {
-  const { theme, activeTab } = useStore(infoStore);
-  const [isMobile, setIsMobile] = useState(false);
+  const { theme } = useStore(infoStore);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkMobile);
-    };
-  }, []);
-
-  // Colori in base al tema DaisyUI
   const getColors = () => {
     if (theme === "night") {
       return { 
