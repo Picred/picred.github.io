@@ -7,39 +7,81 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { UnderConstruction } from "./UnderConstruction";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Background } from "./Background";
 
 export const Root = () => {
     const { activeTab } = useStore(infoStore);
 
-    const [ alert, setAlert ] = useState(true);
+    const [alert, setAlert] = useState(true);
 
     useEffect(() => {
-        setTimeout( () => {
+        setTimeout(() => {
             setAlert(false);
         }, 5000);
-    },[])
+    }, []);
+
+    const pageVariants = {
+        initial: { opacity: 0, y: 30 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -30 },
+    };
 
     return (
-        <div className="bg-base-300 min-h-screen flex flex-col">
+        
+        <div className="min-h-screen flex flex-col">
+            <Background />
             <Navbar />
 
-            <div className="flex-1 flex flex-col justify-center">
-                {activeTab == "Home" && (
-                    <Home />
-                )}
+            <div className="flex-1 flex flex-col justify-center overflow-hidden">
+                <AnimatePresence mode="wait">
+                    {activeTab === "Home" && (
+                        <motion.div
+                            key="home"
+                            variants={pageVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className="h-full"
+                        >
+                            <Home />
+                        </motion.div>
+                    )}
 
-                {activeTab == "About" && (
-                    <About />
-                )}
+                    {activeTab === "About" && (
+                        <motion.div
+                            key="about"
+                            variants={pageVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className="h-full"
+                        >
+                            <About />
+                        </motion.div>
+                    )}
 
-                {activeTab == "Projects" && (
-                    <Projects />
-                )}
+                    {activeTab === "Projects" && (
+                        <motion.div
+                            key="projects"
+                            variants={pageVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className="h-full"
+                        >
+                            <Projects />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
+
             <Footer />
-            
+
             {alert && <UnderConstruction />}
-            
         </div>
-    )
-}
+    );
+};
