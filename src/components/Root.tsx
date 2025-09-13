@@ -5,21 +5,11 @@ import { About } from "../pages/About";
 import { Projects } from "../pages/Projects";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { UnderConstruction } from "./UnderConstruction";
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Background } from "./Background";
 
 export const Root = () => {
     const { activeTab } = useStore(infoStore);
-
-    const [alert, setAlert] = useState(true);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setAlert(false);
-        }, 5000);
-    }, []);
 
     const pageVariants = {
         initial: { opacity: 0, y: 30 },
@@ -81,7 +71,6 @@ export const Root = () => {
 
             <Footer />
 
-            {alert && <UnderConstruction />}
         </div>
     );
 };
