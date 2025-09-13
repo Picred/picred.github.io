@@ -10,12 +10,18 @@ export const Navbar = () => {
         update(tab);
     };
 
+    const tabColors = {
+        Home: "primary",
+        About: "secondary", 
+        Projects: "accent"
+    };
+
     return (
         <motion.nav
             initial={{ y: -60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="sticky top-0 z-50 w-full px-3 lg:px-12 py-3 bg-base-100/80 backdrop-blur-md flex items-end justify-between shadow-md border-b border-base-content/10"
+            className="sticky top-0 z-50 w-full px-4 lg:px-12 py-3 bg-base-100/90 backdrop-blur-lg flex items-end justify-between shadow-lg border-b border-base-content/10"
         >
             {/* Logo */}
             <motion.div
@@ -23,39 +29,46 @@ export const Navbar = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.9, rotate: -5 }}
             >
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full ring-2 ring-primary ring-offset-2 ring-offset-base-100 overflow-hidden">
+                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full ring-2 ring-secondary ring-offset-2 ring-offset-base-100 overflow-hidden shadow-md">
                     <img
                         src="/logo.jpg"
                         alt="Logo"
-                        className="w-full h-full object-cover cursor-pointer"
+                        className="w-full h-full object-cover cursor-pointer transition-transform hover:scale-110"
                         onClick={() => handleChange("Home")}
                     />
                 </div>
             </motion.div>
 
             {/* Desktop Tabs */}
-            <div className="hidden lg:flex tabs tabs-bordered gap-4 items-center">
+            <div className="hidden lg:flex items-center gap-6">
                 {["Home", "About", "Projects"].map((tab, i) => (
-                    <motion.p
-                        key={tab}
-                        role="tab"
-                        className={`tab text-sm lg:text-base cursor-pointer ${activeTab === tab ? "tab-active text-primary" : "text-base-content/70"}`}
+                    <motion.button
+                        key={i}
+                        className={`btn btn-ghost font-semibold text-lg ${
+                            activeTab === tab 
+                                ? `text-primary border-b-2 border-primary`
+                                : "text-base-content hover:text-accent"
+                        }`}
                         onClick={() => handleChange(tab)}
-                        whileHover={{ scale: 1.1, color: "oklch(var(--p))" }}
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
                         {`0${i + 1}. `}
-                        <span className="font-semibold">{tab}</span>
-                    </motion.p>
+                        <span className="ml-1">{tab}</span>
+                    </motion.button>
                 ))}
 
-                <motion.button
-                    whileHover={{ scale: 1.1 }}
+                {/* <motion.a
+                    whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="font-semibold btn btn-outline btn-primary text-lg"
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-success text-lg font-semibold shadow-md hover:btn-warning"
                 >
-                    Resume
-                </motion.button>
+                    📄 Resume
+                </motion.a> */}
             </div>
 
             <div className="flex items-center gap-4">
@@ -63,12 +76,12 @@ export const Navbar = () => {
                 
                 {/* Mobile Dropdown */}
                 <div className="flex flex-row lg:hidden">
-                    <div className="lg:hidden dropdown dropdown-end z-50">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle">
+                    <div className="dropdown dropdown-end z-50">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle text-info">
                             <motion.svg
-                                whileHover={{ rotate: 90 }}
+                                whileHover={{ rotate: 90, scale: 1.1 }}
                                 transition={{ duration: 0.3 }}
-                                className="w-6 h-6"
+                                className="w-7 h-7"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -76,29 +89,36 @@ export const Navbar = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                             </motion.svg>
                         </label>
-                        <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-2 border border-base-content/10">
+                        <ul tabIndex={0} className="dropdown-content menu p-3 shadow bg-base-100 rounded-box w-52 mt-2 border-2 border-accent/20">
                             {["Home", "About", "Projects"].map((tab, i) => (
                                 <motion.li
                                     key={tab}
                                     whileHover={{ x: 5 }}
                                     transition={{ type: "spring", stiffness: 300 }}
+                                    className="my-1"
                                 >
-                                    <span className={`text-sm ${activeTab === tab ? "text-primary" : "text-base-content"}`}>
-                                        0{i + 1}.
-                                        <span
-                                            className="font-semibold"
-                                            onClick={() => handleChange(tab)}
-                                        >
-                                            {tab}
+                                    <button
+                                        className={`btn btn-ghost justify-start w-full text-left ${
+                                            activeTab === tab ? `text-${tabColors[tab as keyof typeof tabColors]} font-bold` : "text-base-content"
+                                        }`}
+                                        onClick={() => handleChange(tab)}
+                                    >
+                                        <span className="text-sm">
+                                            0{i + 1}. <span className="font-semibold">{tab}</span>
                                         </span>
-                                    </span>
+                                    </button>
                                 </motion.li>
                             ))}
-                            <motion.li whileHover={{ x: 5 }}>
-                                <span className="text-sm text-base-content">👉
-                                    <span className="font-semibold">Resume</span>
-                                </span>
-                            </motion.li>
+                            {/* <motion.li whileHover={{ x: 5 }} className="my-1">
+                                <a
+                                    href="/resume.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="btn btn-success btn-sm w-full text-left"
+                                >
+                                    <span className="text-sm">📄 <span className="font-semibold">Resume</span></span>
+                                </a>
+                            </motion.li> */}
                         </ul>
                     </div>
                 </div>

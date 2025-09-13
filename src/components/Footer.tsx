@@ -2,26 +2,27 @@ import { motion } from "framer-motion";
 
 export const Footer = () => {
     return (
-        <footer className="footer bg-base-200 text-base-content items-center lg:justify-between justify-center gap-2 p-4 border-t border-base-content/10">
-            <aside className="flex flex-col lg:flex-row lg:grid-flow-col items-center font-bold text-md lg:text-lg italic gap-2">
-                <p>Made with ❤️ by Andrei Stefan</p>
-                <a 
+        <footer className="footer bg-gradient-to-r from-base-200 to-base-300 text-base-content items-center lg:justify-between justify-center gap-4 p-6 border-t border-base-content/10">
+            <aside className="flex flex-col lg:flex-row lg:grid-flow-col items-center font-bold text-md lg:text-lg gap-2">
+                <p className="text-base-content">Made with ❤️ by Andrei Stefan</p>
+                <motion.a 
+                    whileHover={{ scale: 1.05, color: "hsl(var(--s))" }}
                     href="https://github.com/Picred/picred.github.io" 
-                    className="link link-primary link-hover"
+                    className="link link-secondary font-semibold"
                 >
                     Code on GitHub
-                </a>
+                </motion.a>
             </aside>
 
-            <nav className="grid-flow-col gap-4 lg:gap-5 place-self-center lg:justify-self-end">
+            <nav className="grid-flow-col gap-4 lg:gap-6 place-self-center lg:justify-self-end">
                 {/* LinkedIn */}
                 <motion.a 
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.2, y: -3 }}
+                    whileTap={{ scale: 0.9 }}
                     href="https://www.linkedin.com/in/andreistefand/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-ghost btn-circle"
+                    className="btn btn-ghost btn-circle text-blue-600 hover:text-blue-700 hover:bg-blue-100"
                     aria-label="LinkedIn"
                 >
                     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24">
@@ -31,12 +32,12 @@ export const Footer = () => {
 
                 {/* GitHub */}
                 <motion.a 
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.2, y: -3 }}
+                    whileTap={{ scale: 0.9 }}
                     href="https://github.com/Picred" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-ghost btn-circle"
+                    className="btn btn-ghost btn-circle text-purple-600 hover:text-purple-700 hover:bg-purple-100"
                     aria-label="GitHub"
                 >
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24">
@@ -46,12 +47,12 @@ export const Footer = () => {
 
                 {/* Telegram */}
                 <motion.a 
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.2, y: -3 }}
+                    whileTap={{ scale: 0.9 }}
                     href="https://t.me/picred1" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-ghost btn-circle"
+                    className="btn btn-ghost btn-circle text-sky-600 hover:text-sky-700 hover:bg-sky-100"
                     aria-label="Telegram"
                 >
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24">
