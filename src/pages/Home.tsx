@@ -46,7 +46,7 @@ export const Home = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.8 }}
                         >
-                            🎓 Master's Degree Student in Computer Software Engineering at{" "}
+                            🎓 Master's Student in Computer Software Engineering at{" "}
                             <a
                                 href="https://www.polito.it/"
                                 className="link link-primary font-semibold hover:text-primary-focus"
@@ -63,7 +63,7 @@ export const Home = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.2 }}
                         >
-                            💖 Turning <span className="text-primary font-semibold">complex problems</span> into
+                            💖 Transforming <span className="text-primary font-semibold">complex problems</span> into
                             <span className="text-primary font-semibold"> simple solutions</span>
                         </motion.p>
                         <motion.p
@@ -73,7 +73,7 @@ export const Home = () => {
                             transition={{ delay: 1.4 }}
                         >
                             🚀 Specializing in <span className="text-primary font-semibold">Web Development</span> and
-                            <span className="text-primary font-semibold"> Software Engineer</span>
+                            <span className="text-primary font-semibold"> Software Engineering</span>
                         </motion.p>
                         <motion.div
                             className="flex flex-col lg:flex-row gap-4 mt-6 justify-center"
