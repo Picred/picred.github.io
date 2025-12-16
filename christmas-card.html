@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Natalss</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+        <style>
+            :root {
+            --accent: #e63946;
+            --gold: #ffd700;
+            --navy: #0a192f;
+            --glass: rgba(255, 255, 255, 0.1);
+            }
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at center, #1a365d 0%, #0a192f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            overflow: hidden;
+            }
+            #snow-canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 1; }
+            /* Timer */
+            #timer-box {
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 100;
+            }
+            #timer-circle {
+            font-size: 3rem; font-weight: 700; color: var(--gold);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            }
+            .timer-warning { color: var(--accent) !important; animation: pulse 0.5s infinite; }
+            /* Card */
+            .card {
+            width: 90%; max-width: 600px;
+            background: var(--glass); backdrop-filter: blur(20px);
+            border-radius: 30px; padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative; z-index: 10; text-align: center;
+            transition: all 0.8s ease;
+            }
+            .title { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 5px; letter-spacing: 2px; }
+            .subtitle { font-weight: 300; text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; color: #a0c8e8; margin-bottom: 20px; }
+            /* Albero e Stella */
+            .tree-container { 
+            position: relative; 
+            height: 450px; 
+            margin: 10px 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-end; 
+            }
+            .tree { 
+            position: relative; 
+            width: 240px; 
+            height: 340px; 
+            cursor: crosshair; 
+            }
+            .tree-layer { 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 0; 
+            height: 0; 
+            border-left: solid transparent; 
+            border-right: solid transparent; 
+            border-bottom: solid; 
+            transition: filter 0.5s ease; 
+            }
+            .layer-1 { 
+            bottom: 40px; 
+            border-left-width: 110px; 
+            border-right-width: 110px; 
+            border-bottom-width: 130px; 
+            border-bottom-color: #1b4d2e; 
+            }
+            .layer-2 { 
+            bottom: 110px; 
+            border-left-width: 90px; 
+            border-right-width: 90px; 
+            border-bottom-width: 110px; 
+            border-bottom-color: #24633b; 
+            }
+            .layer-3 { 
+            bottom: 180px; 
+            border-left-width: 60px; 
+            border-right-width: 60px; 
+            border-bottom-width: 90px; 
+            border-bottom-color: #2e804c; 
+            }
+            .trunk { 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 34px; 
+            height: 45px; 
+            background: #5d4037; 
+            border-radius: 4px; 
+            }
+            /* STELLA - Più grande e luminosa */
+            .star { 
+            position: absolute; 
+            top: 10px;
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: var(--gold); 
+            font-size: 4rem;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); 
+            z-index: 15; 
+            animation: starPulse 1.5s infinite alternate;
+            cursor: pointer;
+            }
+            .star:hover {
+            transform: translateX(-50%) scale(1.2);
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+            }
+            .ornament {
+            position: absolute; 
+            width: 20px; 
+            height: 20px; 
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+            z-index: 20;
+            animation: ornamentAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: grab;
+            }
+            .ornament:active {
+            cursor: grabbing;
+            }
+            /* Contatore palline */
+            .ornaments-counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: white;
+            z-index: 25;
+            }
+            /* Info palline disponibili */
+            .balls-info {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            }
+            .ball-count {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #a0c8e8;
+            }
+            .ball-count-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            }
+            /* Regali sotto l'albero - MODIFICATO */
+            .gifts-container {
+            position: absolute;
+            bottom: -10px; /* prima era 20px */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 25px;
+            z-index: 30; /* prima era 5 */
+            width: 100%;
+            justify-content: center;
+            align-items: flex-end;
+            pointer-events: auto;
+            }
+            
+            .gift {
+            width: 80px;
+            height: 80px;
+            background: #e63946; /* colore classico regalo */
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+            /* Nastro verticale */
+            .gift::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 12px;
+            background: #ffd700; /* nastro dorato */
+            transform: translateX(-50%);
+            border-radius: 2px;
+            }
+            /* Nastro orizzontale */
+            .gift::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 12px;
+            background: #ffd700; /* nastro dorato */
+            transform: translateY(-50%);
+            border-radius: 2px;
+            }
+            /* Hover */
+            .gift:hover {
+            transform: translateY(-10px) scale(1.08);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+            }
+            .gift-label {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+            }
+            .gift-label::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid white;
+            }
+            .gift:hover .gift-label {
+            opacity: 1;
+            }
+            .gift:hover {
+            transform: translateY(-10px) scale(1.05);
+            }
+            /* Controls */
+            .ui-controls { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            align-items: center; 
+            }
+            .color-picker { 
+            display: flex; 
+            gap: 12px; 
+            flex-wrap: wrap;
+            justify-content: center;
+            }
+            .color-dot { 
+            width: 35px; 
+            height: 35px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            border: 3px solid transparent; 
+            transition: 0.3s; 
+            }
+            .color-dot.active { 
+            border-color: #fff; 
+            transform: scale(1.2); 
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            }
+            .btn-lights {
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white; 
+            padding: 10px 20px; 
+            border-radius: 50px; 
+            cursor: pointer;
+            font-family: inherit; 
+            font-size: 0.9rem; 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            }
+            .btn-lights.active { 
+            background: var(--gold); 
+            color: #000; 
+            box-shadow: 0 0 20px var(--gold); 
+            }
+            .btn-add-gift {
+            background: rgba(230, 57, 70, 0.2); 
+            border: 1px solid var(--accent);
+            color: white; 
+            padding: 10px 20px; 
+            border-radius: 50px; 
+            cursor: pointer;
+            font-family: inherit; 
+            font-size: 0.9rem; 
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            }
+            .btn-add-gift:hover {
+            background: rgba(230, 57, 70, 0.3);
+            transform: translateY(-2px);
+            }
+            /* Modal per nome regalo */
+            .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            }
+            .modal-content {
+            background: var(--navy);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            border: 2px solid var(--gold);
+            }
+            .modal h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            }
+            .modal-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--glass);
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            }
+            .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            }
+            .modal-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: 0.3s;
+            }
+            .modal-btn.confirm {
+            background: var(--gold);
+            color: #000;
+            }
+            .modal-btn.cancel {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            }
+            /* Finale */
+            #final-screen {
+            position: fixed; 
+            inset: 0; 
+            z-index: 200;
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            background: radial-gradient(circle at center, #1a365d, #050b14);
+            opacity: 0;
+            transition: opacity 1s ease;
+            }
+            .big-wish {
+            font-family: 'Playfair Display', serif; 
+            font-size: 5rem; 
+            color: var(--gold);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            transform: scale(0)  translateY(80px);
+            transition: 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-bottom: 40px;
+            margin-top: 180px;
+            }
+            .music-note {
+            position: absolute;
+            bottom: 30px;
+            font-size: 2rem;
+            color: var(--gold);
+            animation: float 3s infinite ease-in-out;
+            }
+            .restart-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-top: 30px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            }
+            .restart-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.05);
+            }
+            .color-dot.disabled {
+            opacity: 0.4;
+            pointer-events: none;
+            position: relative;
+            filter: grayscale(100%);
+            }
+            .color-dot.disabled::after {
+            content: "✕";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            }
+            @keyframes starPulse { 
+            from { transform: translateX(-50%) scale(1); } 
+            to { transform: translateX(-50%) scale(1.1); } 
+            }
+            @keyframes ornamentAppear { 
+            from { transform: scale(0); } 
+            to { transform: scale(1); } 
+            }
+            @keyframes pulse { 
+            0% { transform: scale(1); } 
+            50% { transform: scale(1.1); } 
+            100% { transform: scale(1); } 
+            }
+            @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            }
+            @keyframes giftShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            }
+            /* Responsive */
+            @media (max-width: 768px) {
+            .title { font-size: 2.5rem; }
+            .big-wish { font-size: 3.5rem; }
+            .tree-container { height: 400px; }
+            .gifts-container { gap: 15px; }
+            .gift { width: 65px; height: 65px; }
+            .gift-label { font-size: 0.8rem; min-width: 80px; top: -30px; }
+            }
+            #santa {
+            position: fixed;
+            top: 10%;
+            right: -300px;
+            font-size: 3rem;
+            z-index: 300;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
+            pointer-events: none;
+            display: none; /* 👈 nascosto davvero */
+            }
+            #santa.fly {
+            display: block;
+            animation: santaFly 18s linear forwards;
+            }
+            @keyframes santaFly {
+            0% {
+            transform: translateX(0);
+            opacity: 0;
+            }
+            10% {
+            opacity: 1;
+            }
+            100% {
+            transform: translateX(calc(-100vw - 600px));
+            opacity: 0;
+            }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Modal per nome giocatore -->
+        <div class="modal" id="nameModal" style="display:flex;">
+            <div class="modal-content">
+                <h3>Come ti chiami?</h3>
+                <input type="text" class="modal-input" id="playerNameInput" placeholder="Scrivi il tuo nome..." maxlength="20">
+                <div class="modal-buttons">
+                    <button class="modal-btn confirm" id="confirmNameBtn">OK</button>
+                </div>
+            </div>
+        </div>
+        <canvas id="snow-canvas"></canvas>
+        <div id="timer-box">
+            <div id="timer-circle">40</div>
+        </div>
+        <div class="card" id="main-card">
+            <div class="header">
+                <h5 class="title">Addobba l'albero!</h5>
+                <div class="subtitle">... in 40 secondi!</div>
+            </div>
+            <div class="tree-container">
+                <div class="tree" id="tree">
+                    <div class="star">★</div>
+                    <div class="tree-layer layer-3"></div>
+                    <div class="tree-layer layer-2"></div>
+                    <div class="tree-layer layer-1"></div>
+                    <div class="trunk"></div>
+                    <div id="ornaments-container"></div>
+                    <!-- Contatore palline -->
+                    <div class="ornaments-counter" id="ornaments-counter">Palline: 0/15</div>
+                    <!-- Regali sotto l'albero -->
+                    <div class="gifts-container" id="gifts-container">
+                        <!-- Regali verranno aggiunti qui -->
+                    </div>
+                </div>
+            </div>
+            <div class="ui-controls">
+                <div class="color-picker">
+                    <div class="color-dot active" style="background: #e63946;" data-color="#e63946" data-color-name="rosso"></div>
+                    <div class="color-dot" style="background: #ffffff;" data-color="#ffffff" data-color-name="bianco"></div>
+                    <div class="color-dot" style="background: #4facfe;" data-color="#4facfe" data-color-name="blu"></div>
+                </div>
+                <!-- Info palline disponibili -->
+                <div class="balls-info">
+                    <div class="ball-count">
+                        <div class="ball-count-dot" style="background: #e63946;"></div>
+                        <span id="red-count">5</span> rosse
+                    </div>
+                    <div class="ball-count">
+                        <div class="ball-count-dot" style="background: #ffffff; border: 1px solid #ccc;"></div>
+                        <span id="white-count">5</span> bianche
+                    </div>
+                    <div class="ball-count">
+                        <div class="ball-count-dot" style="background: #4facfe;"></div>
+                        <span id="blue-count">5</span> blu
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                    <button class="btn-lights" id="lightBtn"><i class="fas fa-lightbulb"></i> ACCENDI LUCI</button>
+                    <button class="btn-add-gift" id="addGiftBtn"><i class="fas fa-gift"></i> AGGIUNGI REGALO (3 max)</button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal per nome regalo -->
+        <div class="modal" id="giftModal">
+            <div class="modal-content">
+                <h3><i class="fas fa-gift"></i> Nome del Regalo</h3>
+                <input type="text" class="modal-input" id="giftNameInput" placeholder="Scrivi il nome per questo regalo..." maxlength="20">
+                <div class="modal-buttons">
+                    <button class="modal-btn confirm" id="confirmGiftBtn">CONFERMA</button>
+                    <button class="modal-btn cancel" id="cancelGiftBtn">ANNULLA</button>
+                </div>
+            </div>
+        </div>
+        <div id="final-screen">
+            <div id="winner-tree-spot"></div>
+            <h1 class="big-wish" id="wish-text">Buon Natale</h1>
+            <div class="music-note">♪</div>
+            <button class="restart-btn" onclick="restartGame()">
+            <i class="fas fa-redo"></i> Creane un altro!
+            </button>
+            <div id="score-text" style="
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+                color: var(--gold);
+                font-family: 'Montserrat', sans-serif;
+                font-size: 1.2rem;
+                text-align: right;
+                text-shadow: 0 0 10px rgba(255,215,0,0.6);
+                opacity: 0;
+                transition: opacity 1s ease;
+                "></div>
+        </div>
+        <!-- Audio per la canzone di Natale -->
+        <audio id="christmas-song" preload="auto">
+            <source src="song.wav" type="audio/wav">
+            <source src="song.mp3" type="audio/mpeg">
+        </audio>
+        <script>
+            // ========== INIZIALIZZAZIONE ==========
+            const canvas = document.getElementById('snow-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            // valore timer
+            let timeLeft = 40;
+            let lightsOn = false;
+            let selectedColor = '#e63946';
+            let selectedColorName = 'rosso';
+            
+            let giftCount = 0;
+            let musicPlayed = false;
+            
+            // Contatori palline per colore (5 per ogni colore)
+            const ballCounts = {
+                '#e63946': { count: 0, max: 5, name: 'rosso' },
+                '#ffffff': { count: 0, max: 5, name: 'bianco' },
+                '#4facfe': { count: 0, max: 5, name: 'blu' }
+            };
+            
+            // Variabile per gestire l'aggiunta del regalo
+            let pendingGift = null;
+            
+            // ========== NEVE ==========
+            function initCanvas() { 
+                canvas.width = window.innerWidth; 
+                canvas.height = window.innerHeight; 
+            }
+            window.onresize = initCanvas; 
+            initCanvas();
+            
+            class Particle {
+                constructor(x, y, color, speed) {
+                    this.x = x; 
+                    this.y = y; 
+                    this.color = color;
+                    this.vx = (Math.random() - 0.5) * speed;
+                    this.vy = (Math.random() - 0.5) * speed;
+                    this.life = 1;
+                    this.size = Math.random() * 3 + 1;
+                }
+                update() { 
+                    this.x += this.vx; 
+                    this.y += this.vy; 
+                    this.life -= 0.01; 
+                }
+                draw() {
+                    ctx.globalAlpha = this.life; 
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath(); 
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); 
+                    ctx.fill();
+                }
+            }
+            
+            
+            function calculateScore() {
+            const ornaments = document.querySelectorAll('.ornament');
+            const totalBalls = ornaments.length;
+            const gifts = giftCount;
+            
+            // Bonus luci
+            const lightsBonus = lightsOn ? 1 : 0;
+            
+            let avgDistance = 0;
+            if (totalBalls > 1) {
+            let sumDist = 0;
+            let count = 0;
+            for (let i = 0; i < totalBalls; i++) {
+                const rect1 = ornaments[i].getBoundingClientRect();
+                const x1 = rect1.left + rect1.width/2;
+                const y1 = rect1.top + rect1.height/2;
+                for (let j = i+1; j < totalBalls; j++) {
+                    const rect2 = ornaments[j].getBoundingClientRect();
+                    const x2 = rect2.left + rect2.width/2;
+                    const y2 = rect2.top + rect2.height/2;
+                    const dist = Math.hypot(x2-x1, y2-y1);
+                    sumDist += dist;
+                    count++;
+                }
+            }
+            avgDistance = sumDist / count;
+            }
+            
+            // Normalizziamo avgDistance tra 0 e 100 (circa)
+            const distributionScore = Math.min(avgDistance / 100, 1) * 4; // max 4 punti
+            
+            // Numero palline e regali (max 5 punti)
+            const ballsScore = Math.min(totalBalls / 15, 1) * 3; // max 3 punti
+            const giftsScore = Math.min(gifts / 3, 1) * 2; // max 2 punti
+            
+            let score = ballsScore + giftsScore + distributionScore + lightsBonus;
+            if(score > 10) score = 10;
+            
+            // Valutazione testuale
+            let evaluation = "";
+            if(score >= 9) evaluation = "Eccellente! 🌟";
+            else if(score >= 7) evaluation = "Davvero bello! 🎄";
+            else if(score >= 5) evaluation = "Molto carino!";
+            else if(score >= 3) evaluation = "Bello, continua così!";
+            else evaluation = "Apprezzo l'impegno!";
+            
+            return {score: Math.round(score), evaluation};
+            }
+            
+            
+            function createSnowExplosion() {
+                for(let i = 0; i < 100; i++) {
+                    particles.push(new Particle(
+                        window.innerWidth/2, 
+                        window.innerHeight/2, 
+                        'white', 
+                        5
+                    ));
+                }
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, i) => { 
+                    p.update(); 
+                    p.draw(); 
+                    if(p.life <= 0) particles.splice(i, 1); 
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+            createSnowExplosion();
+            
+            // ========== TIMER (15 SECONDI) ==========
+            let countdown = null;
+            
+            function shakeScreen() {
+                const mainCard = document.getElementById('main-card');
+                mainCard.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    mainCard.style.animation = '';
+                }, 500);
+            }
+            
+            // ========== LUCI ==========
+            document.getElementById('lightBtn').onclick = function() {
+                lightsOn = !lightsOn;
+                this.classList.toggle('active');
+                document.querySelectorAll('.tree-layer').forEach(l => {
+                    l.style.filter = lightsOn ? 'brightness(1.5) drop-shadow(0 0 15px gold)' : 'none';
+                });
+                playSound();
+            };
+            
+            // ========== SUONI ==========
+            function playSound() {
+                try {
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const osc = audioCtx.createOscillator();
+                    const g = audioCtx.createGain();
+                    osc.connect(g); 
+                    g.connect(audioCtx.destination);
+                    osc.frequency.value = 500 + Math.random() * 300;
+                    g.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.1);
+                    osc.start(); 
+                    osc.stop(audioCtx.currentTime + 0.1);
+                } catch (e) {
+                    console.log("Audio non supportato");
+                }
+            }
+            
+            // ========== DECORAZIONI ==========
+            document.querySelectorAll('.color-dot').forEach(dot => {
+                dot.onclick = () => {
+                    document.querySelector('.color-dot.active').classList.remove('active');
+                    dot.classList.add('active');
+                    selectedColor = dot.dataset.color;
+                    selectedColorName = dot.dataset.colorName;
+                    playSound();
+                };
+            });
+            
+            // Aggiungi palline all'albero
+            const tree = document.getElementById('tree');
+            tree.onclick = (e) => {
+                if (timeLeft <= 0) return;
+            
+            if (ballCounts[selectedColor].count >= ballCounts[selectedColor].max) {
+            return;
+            }
+
+                
+                const rect = tree.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                
+                const orb = document.createElement('div');
+                orb.className = 'ornament';
+                orb.style.left = `${x}%`; 
+                orb.style.top = `${y}%`;
+                orb.style.backgroundColor = selectedColor;
+                orb.style.boxShadow = `0 0 10px ${selectedColor}`;
+                
+                // Permetti di trascinare le palline
+                makeDraggable(orb);
+                
+                document.getElementById('ornaments-container').appendChild(orb);
+                
+                // Aggiorna contatori
+                ballCounts[selectedColor].count++;
+                updateBallCounters();
+                // 🔁 Cambio automatico colore se esaurito
+            if (ballCounts[selectedColor].count >= ballCounts[selectedColor].max) {
+            const nextAvailable = Object.keys(ballCounts)
+            .find(c => ballCounts[c].count < ballCounts[c].max);
+            
+            document.querySelector('.color-dot.active')?.classList.remove('active');
+            
+            if (nextAvailable) {
+            const nextDot = document.querySelector(
+                `.color-dot[data-color="${nextAvailable}"]`
+            );
+            nextDot.classList.add('active');
+            selectedColor = nextAvailable;
+            selectedColorName = ballCounts[nextAvailable].name;
+            }
+            }
+            
+                
+                playSound();
+            };
+            
+            // Funzione per aggiornare i contatori delle palline
+            function updateBallCounters() {
+            document.getElementById('red-count').textContent =
+            ballCounts['#e63946'].max - ballCounts['#e63946'].count;
+            document.getElementById('white-count').textContent =
+            ballCounts['#ffffff'].max - ballCounts['#ffffff'].count;
+            document.getElementById('blue-count').textContent =
+            ballCounts['#4facfe'].max - ballCounts['#4facfe'].count;
+            
+            const totalBalls = Object.values(ballCounts)
+            .reduce((sum, color) => sum + color.count, 0);
+            
+            document.getElementById('ornaments-counter').textContent =
+            `Palline: ${totalBalls}/15`;
+            
+            // 🔒 Disabilita i colori terminati
+            document.querySelectorAll('.color-dot').forEach(dot => {
+            const color = dot.dataset.color;
+            if (ballCounts[color].count >= ballCounts[color].max) {
+                dot.classList.add('disabled');
+            }
+            });
+            }
+            
+            
+            // ========== REGALI ==========
+            document.getElementById('addGiftBtn').onclick = function() {
+                if(timeLeft <= 0) return;
+                if(giftCount >= 3) {
+                    alert("Puoi avere al massimo 3 regali sotto l'albero!");
+                    return;
+                }
+                
+                // Mostra il modal per inserire il nome del regalo
+                showGiftModal();
+            };
+            
+            function showGiftModal() {
+                document.getElementById('giftModal').style.display = 'flex';
+                document.getElementById('giftNameInput').focus();
+            }
+            
+            function hideGiftModal() {
+                document.getElementById('giftModal').style.display = 'none';
+                document.getElementById('giftNameInput').value = '';
+            }
+            
+            // Gestione del modal
+            document.getElementById('confirmGiftBtn').onclick = function() {
+                const giftName = document.getElementById('giftNameInput').value.trim();
+                if (giftName === '') {
+                    alert("Per favore, inserisci un nome per il regalo!");
+                    return;
+                }
+                
+                hideGiftModal();
+                addGiftUnderTree(giftName);
+                playSound();
+            };
+            
+            document.getElementById('cancelGiftBtn').onclick = function() {
+                hideGiftModal();
+            };
+            
+            // Chiudi modal con ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && document.getElementById('giftModal').style.display === 'flex') {
+                    hideGiftModal();
+                }
+            });
+            
+            function addGiftUnderTree(giftName) {
+                const giftsContainer = document.getElementById('gifts-container');
+                const giftColors = ['#e63946', '#2a9d8f', '#ff69b4', '#ffd700', '#4facfe'];
+                const ribbonColors = ['#ff0000', '#00ff00', '#0000ff'];
+                
+                const gift = document.createElement('div');
+                gift.className = 'gift';
+                // Posizionamento: 1 a sinistra, 2 a destra
+            if (giftCount === 0) {
+            gift.style.transform = 'translateX(-110px)';
+            } else {
+            gift.style.transform = 'translateX(110px)';
+            }
+            
+                gift.style.backgroundColor = giftColors[giftCount % giftColors.length];
+                gift.style.animation = `giftShake 1s`;
+                
+                const giftBox = document.createElement('div');
+                giftBox.className = 'gift-box';
+                giftBox.style.backgroundColor = giftColors[giftCount % giftColors.length];
+                
+                const giftLid = document.createElement('div');
+                giftLid.className = 'gift-lid';
+                
+                const ribbon = document.createElement('div');
+                ribbon.className = 'gift-ribbon';
+                ribbon.style.backgroundColor = ribbonColors[giftCount % ribbonColors.length];
+                
+                const knot = document.createElement('div');
+                knot.className = 'gift-knot';
+                knot.style.backgroundColor = ribbonColors[giftCount % ribbonColors.length];
+                
+                const label = document.createElement('div');
+                label.className = 'gift-label';
+                label.textContent = giftName;
+                
+                giftBox.appendChild(giftLid);
+                giftBox.appendChild(ribbon);
+                giftBox.appendChild(knot);
+                gift.appendChild(giftBox);
+                gift.appendChild(label);
+                giftsContainer.appendChild(gift);
+                
+                giftCount++;
+                
+                // Rimuovi l'animazione dopo che è finita
+                setTimeout(() => {
+                    gift.style.animation = '';
+                }, 1000);
+                
+                // Click sul regalo - ora non fa più sparire, ma suona
+                gift.onclick = function(e) {
+                    e.stopPropagation();
+                    playSound();
+                };
+            }
+            
+            
+            
+            function startGame() {
+            if (countdown !== null) return; // evita doppio start
+            
+            countdown = setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer-circle').innerText = timeLeft;
+            
+            if(timeLeft <= 5) {
+                document.getElementById('timer-circle').classList.add('timer-warning');
+            
+                if(timeLeft === 5) createSnowExplosion();
+                if(timeLeft === 3) shakeScreen();
+            }
+            
+            if(timeLeft <= 0) {
+                clearInterval(countdown);
+                triggerFinal();
+            }
+            }, 1000);
+            
+            }
+            
+            
+            // ========== TRASCINAMENTO PALLINE ==========
+            function makeDraggable(element) {
+                let isDragging = false;
+                let offsetX, offsetY;
+                
+                element.addEventListener('mousedown', startDrag);
+                element.addEventListener('touchstart', startDrag);
+                
+                function startDrag(e) {
+                    if (timeLeft <= 0) return;
+                    
+                    isDragging = true;
+                    e.preventDefault();
+                    
+                    const rect = element.getBoundingClientRect();
+                    if (e.type === 'mousedown') {
+                        offsetX = e.clientX - rect.left;
+                        offsetY = e.clientY - rect.top;
+                        document.addEventListener('mousemove', drag);
+                        document.addEventListener('mouseup', stopDrag);
+                    } else {
+                        offsetX = e.touches[0].clientX - rect.left;
+                        offsetY = e.touches[0].clientY - rect.top;
+                        document.addEventListener('touchmove', drag);
+                        document.addEventListener('touchend', stopDrag);
+                    }
+                }
+                
+                function drag(e) {
+                    if (!isDragging) return;
+                    
+                    e.preventDefault();
+                    const treeRect = tree.getBoundingClientRect();
+                    
+                    let clientX, clientY;
+                    if (e.type === 'mousemove') {
+                        clientX = e.clientX;
+                        clientY = e.clientY;
+                    } else {
+                        clientX = e.touches[0].clientX;
+                        clientY = e.touches[0].clientY;
+                    }
+                    
+                    // Calcola posizione relativa all'albero
+                    let x = ((clientX - treeRect.left - offsetX) / treeRect.width) * 100;
+                    let y = ((clientY - treeRect.top - offsetY) / treeRect.height) * 100;
+                    
+                    // Mantieni dentro l'albero
+                    x = Math.max(0, Math.min(x, 100));
+                    y = Math.max(0, Math.min(y, 100));
+                    
+                    element.style.left = `${x}%`;
+                    element.style.top = `${y}%`;
+                }
+                
+                function stopDrag() {
+                    isDragging = false;
+                    document.removeEventListener('mousemove', drag);
+                    document.removeEventListener('mouseup', stopDrag);
+                    document.removeEventListener('touchmove', drag);
+                    document.removeEventListener('touchend', stopDrag);
+                }
+            }
+            
+            // ========== FINALE ==========
+            function triggerFinal() {
+                // Espolsione di neve
+                startFinalSnow();
+            
+                for(let i = 0; i < 500; i++) {
+                    setTimeout(() => {
+                        particles.push(new Particle(
+                            window.innerWidth/2, 
+                            window.innerHeight/2, 
+                            i % 3 === 0 ? 'gold' : i % 3 === 1 ? 'red' : 'white', 
+                            20
+                        ));
+                    }, i * 10);
+                }
+                
+                // Transizione
+                document.getElementById('main-card').style.opacity = '0';
+                document.getElementById('timer-box').style.opacity = '0';
+                
+                setTimeout(() => {
+                    document.getElementById('main-card').style.display = 'none';
+                    document.getElementById('timer-box').style.display = 'none';
+                    
+                    // Sposta l'albero nella schermata finale
+                    const winnerSpot = document.getElementById('winner-tree-spot');
+                    winnerSpot.appendChild(tree);
+                    tree.style.transform = 'scale(1.3)';
+                    tree.style.transition = 'transform 1s ease';
+                    
+            
+            
+                    // Mostra la schermata finale
+                
+                    document.getElementById('final-screen').style.display = 'flex';
+                    setTimeout(() => {
+                        document.getElementById('final-screen').style.opacity = '1';
+                        
+                        // Animazione del testo
+                        setTimeout(() => {
+                            document.getElementById('wish-text').style.transform = 'scale(1)';
+                            
+                            // Avvia la musica di Natale
+                            setTimeout(() => {
+                                playChristmasSong();
+                            }, 500);
+                            // Valutazione casuale
+            
+            const {score, evaluation} = calculateScore();
+            const scoreText = document.getElementById('score-text');
+            scoreText.textContent = `${playerName}, il tuo albero è stato valutato ${score}/10. ${evaluation}`;
+            setTimeout(() => { scoreText.style.opacity = '1'; }, 800);
+            
+            
+            
+            // Mostra il testo dopo breve delay
+            setTimeout(() => {
+            scoreText.style.opacity = '1';
+            }, 800);
+            
+                            
+                        }, 100);
+                    }, 50);
+                }, 800);
+                setTimeout(() => {
+            document.getElementById('santa').classList.add('fly');
+            }, 1200);
+            
+            
+            }
+            
+            
+            function startFinalSnow() {
+            setInterval(() => {
+            particles.push(new Particle(
+                Math.random() * window.innerWidth,
+                -10,
+                'white',
+                1.2
+            ));
+            }, 80);
+            }
+            
+            
+            
+            function playChristmasSong() {
+                if (musicPlayed) return;
+                
+                const song = document.getElementById('christmas-song');
+                song.volume = 1;
+                
+                // Prova a far partire la musica
+                const playPromise = song.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        musicPlayed = true;
+                        console.log("Musica di Natale avviata!");
+                    }).catch(error => {
+                        console.log("Errore nella riproduzione della musica:", error);
+                        // Fallback: mostra un messaggio
+                        const musicNote = document.querySelector('.music-note');
+                        musicNote.textContent = "🎵 Clicca per attivare la musica 🎵";
+                        musicNote.style.cursor = 'pointer';
+                        
+                        musicNote.onclick = () => {
+                            song.play().then(() => {
+                                musicNote.textContent = "♪";
+                                musicNote.style.cursor = 'default';
+                            });
+                        };
+                    });
+                }
+            }
+            
+            function restartGame() {
+                // Ricarica la pagina
+                document.getElementById('santa').classList.remove('fly');
+            
+                location.reload();
+            }
+            
+            // Aggiungi stile per lo shake
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            
+                if (ballCounts[selectedColor].count >= ballCounts[selectedColor].max) {
+            const nextAvailable = Object.keys(ballCounts)
+            .find(c => ballCounts[c].count < ballCounts[c].max);
+            
+            if (nextAvailable) {
+            document.querySelector('.color-dot.active')?.classList.remove('active');
+            const nextDot = document.querySelector(`.color-dot[data-color="${nextAvailable}"]`);
+            nextDot.classList.add('active');
+            selectedColor = nextAvailable;
+            selectedColorName = ballCounts[nextAvailable].name;
+            }
+            }
+            
+            
+            let playerName = "Anonimo"; // default se non viene inserito
+            const nameModal = document.getElementById('nameModal');
+            document.getElementById('confirmNameBtn').onclick = function() {
+            const inputName = document.getElementById('playerNameInput').value.trim();
+            if(inputName !== "") playerName = inputName;
+            
+            nameModal.style.display = 'none';
+            
+            // 🚀 ORA parte davvero il gioco
+            startGame();
+            };
+            // Conferma nome giocatore con Enter
+            document.getElementById('playerNameInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+            e.preventDefault();
+            document.getElementById('confirmNameBtn').click();
+            }
+            });
+            
+            // Conferma nome regalo con Enter
+            document.getElementById('giftNameInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+            e.preventDefault();
+            document.getElementById('confirmGiftBtn').click();
+            }
+            });
+        </script>
+        <div id="santa">
+            🦌🦌🦌🛷🎅
+        </div>
+    </body>
+</html>
