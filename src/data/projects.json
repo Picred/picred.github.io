@@ -1,7 +1,7 @@
 {
     "projects": [
         {
-            "name": "EzShop [2025]",
+            "name": "EzShop [2026]",
             "description": "EZShop is a retail management system designed to handle the end-to-end operations of a small to medium-sized shop, integrating user management, inventory control, sales, orders, and accounting functions into a single platform. EZShop defines a set of business operations that orchestrates user interactions, product lifecycle, and financial transactions.",
             "link": "https://github.com/Picred/EzShop",
             "techStack": "Python, ORM, SQLAlchemy, 3-Layer-Architecture",
@@ -61,13 +61,6 @@
             "description": "Cinema Database System is designed to track cinema operations, including screening rooms, ticket and snack sales, staff shifts, and customer feedback. It ensures seat availability, manages sales transactions, updates snack pricing, and calculates daily revenue. The system also stores film details and aggregates anonymous reviews for informed movie selection.",
             "link": "https://github.com/Picred/cinema-database",
             "techStack": "MySQL",
-            "imgUrl": ""
-        },
-        {
-            "name": "Credit Card Number Checker [2022]",
-            "description": "Luhn Algorithm Validator is a C++ program that generates and verifies credit card numbers using the Luhn algorithm. It validates user-input numbers, handles exceptions gracefully, and optionally creates random numbers to test correctness. This project demonstrates algorithm implementation, input validation, and practical error handling in C++.",
-            "link": "https://github.com/Picred/ccn-check/tree/main",
-            "techStack": "C++",
             "imgUrl": ""
         },
         {
