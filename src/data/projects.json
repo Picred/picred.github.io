@@ -1,6 +1,13 @@
 {
     "projects": [
         {
+            "name": "EzShop [2025]",
+            "description": "EZShop is a retail management system designed to handle the end-to-end operations of a small to medium-sized shop, integrating user management, inventory control, sales, orders, and accounting functions into a single platform. EZShop defines a set of business operations that orchestrates user interactions, product lifecycle, and financial transactions.",
+            "link": "https://github.com/Picred/EzShop",
+            "techStack": "Python, ORM, SQLAlchemy, 3-Layer-Architecture",
+            "imgUrl": "" 
+        },
+        {
             "name": "Maze Navigation Problem [2025]",
             "description": "My thesis, 'Analysis of Optimal Navigation Strategies for Autonomous Exploration in Unknown Environments', studies how autonomous agents navigate mazes using strategies like Random Walk, Wall Follower, Tremaux, and Adaptive Walk. Simulations show Adaptive Walk excels in efficiency and success, with applications in robotics, autonomous vehicles, and multi-agent exploration systems.",
             "link": "https://github.com/Picred/maze-navigation",
