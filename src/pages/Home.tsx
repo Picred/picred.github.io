@@ -72,7 +72,7 @@ export const Home = () => {
                 <span className="font-mono text-[10px] opacity-40 uppercase tracking-widest">Sys_Status: OPTIMIZED</span>
               </div>
               <h1 className="text-7xl sm:text-8xl lg:text-[9rem] font-black leading-[0.85] tracking-tighter uppercase">
-                ANDREI<br /><span className="text-secondary opacity-80 text-[#ff0000]">STEFAN</span>
+                ANDREI<br /><span className="text-[#ff0000] opacity-80 ">STEFAN</span>
               </h1>
             </div>
 
