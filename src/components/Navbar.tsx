@@ -1,4 +1,3 @@
-import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useStore } from "zustand";
 import { infoStore } from "../store/infoStore";
 import { motion } from "framer-motion";
@@ -10,116 +9,71 @@ export const Navbar = () => {
         update(tab);
     };
 
-    const tabColors = {
-        Home: "primary",
-        About: "secondary", 
-        Projects: "accent"
-    };
-
     return (
         <motion.nav
             initial={{ y: -60, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="sticky top-0 z-50 w-full px-4 lg:px-12 py-3 bg-base-100/90 backdrop-blur-lg flex items-end justify-between shadow-lg border-b border-base-content/10"
+            className="fixed top-0 left-0 right-0 z-[100] px-3 sm:px-6 lg:px-12 py-3 sm:py-4 flex items-center justify-between"
         >
-            {/* Logo */}
-            <motion.div
-                className="flex items-center justify-center lg:justify-start"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9, rotate: -5 }}
-            >
-                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full ring-2 ring-secondary ring-offset-2 ring-offset-base-100 overflow-hidden shadow-md">
-                    <img
-                        src="/logo.jpg"
-                        alt="Logo"
-                        className="w-full h-full object-cover cursor-pointer transition-transform hover:scale-110"
-                        onClick={() => handleChange("Home")}
-                    />
-                </div>
-            </motion.div>
+            {/* Glass Container */}
+            <div className="absolute inset-0 bg-base-100/20 backdrop-blur-md border-b border-white/5 pointer-events-none" />
 
-            {/* Desktop Tabs */}
-            <div className="hidden lg:flex items-center gap-6">
-                {["Home", "About", "Projects"].map((tab, i) => (
-                    <motion.button
-                        key={i}
-                        className={`btn btn-ghost font-semibold text-lg ${
-                            activeTab === tab 
-                                ? `text-primary border-b-2 border-primary`
-                                : "text-base-content hover:text-accent"
-                        }`}
-                        onClick={() => handleChange(tab)}
-                        whileHover={{ scale: 1.1, y: -2 }}
+            <div className="relative flex items-center justify-between w-full max-w-7xl mx-auto">
+                {/* Logo & System ID */}
+                <div className="flex items-center gap-4">
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 cursor-pointer shadow-lg shadow-primary/5 bg-white/5 flex items-center justify-center group/home"
+                        onClick={() => handleChange("Home")}
                     >
-                        {`0${i + 1}. `}
-                        <span className="ml-1">{tab}</span>
-                    </motion.button>
-                ))}
+                        <svg 
+                            viewBox="0 0 24 24" 
+                            className="w-5 h-5 fill-none stroke-current opacity-40 group-hover/home:opacity-100 transition-opacity" 
+                            strokeWidth="2.5" 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"
+                        >
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                    </motion.div>
+                    <div className="hidden md:flex flex-col">
+                        <span className="text-[11px] font-black tracking-[0.3em] uppercase opacity-30">System_ID</span>
+                        <span className="text-[13px] font-mono font-bold tracking-tighter opacity-70">ANDREI.STN_v2.0</span>
+                    </div>
+                </div>
 
-                {/* <motion.a
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="/resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-success text-lg font-semibold shadow-md hover:btn-warning"
-                >
-                    📄 Resume
-                </motion.a> */}
-            </div>
+                {/* Navigation Links */}
+                <div className="flex items-center gap-1 sm:gap-2 lg:gap-8 bg-white/5 p-1 rounded-[1.5rem] border border-white/10 backdrop-blur-sm">
+                    {["Home", "About", "Projects"].map((tab, i) => (
+                        <button
+                            key={tab}
+                            onClick={() => handleChange(tab)}
+                            className={`relative px-3 sm:px-6 py-2 sm:py-2.5 rounded-2xl transition-all duration-300 group`}
+                        >
+                            {activeTab === tab && (
+                                <motion.div 
+                                    layoutId="nav-bg"
+                                    className="absolute inset-0 bg-primary/10 border border-primary/20 rounded-2xl"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            <div className="relative flex items-center gap-2 sm:gap-3">
+                                <span className={`hidden sm:block font-mono text-[10px] sm:text-[11px] font-bold ${activeTab === tab ? "text-primary" : "opacity-30 group-hover:opacity-100"}`}>0{i + 1}</span>
+                                <span className={`text-[11px] sm:text-[13px] font-black uppercase tracking-widest ${activeTab === tab ? "text-primary" : "opacity-60 group-hover:opacity-100"}`}>
+                                    {tab}
+                                </span>
+                            </div>
+                        </button>
+                    ))}
+                </div>
 
-            <div className="flex items-center gap-4">
-                <ThemeSwitcher />
-                
-                {/* Mobile Dropdown */}
-                <div className="flex flex-row lg:hidden">
-                    <div className="dropdown dropdown-end z-50">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle text-info">
-                            <motion.svg
-                                whileHover={{ rotate: 90, scale: 1.1 }}
-                                transition={{ duration: 0.3 }}
-                                className="w-7 h-7"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </motion.svg>
-                        </label>
-                        <ul tabIndex={0} className="dropdown-content menu p-3 shadow bg-base-100 rounded-box w-52 mt-2 border-2 border-accent/20">
-                            {["Home", "About", "Projects"].map((tab, i) => (
-                                <motion.li
-                                    key={tab}
-                                    whileHover={{ x: 5 }}
-                                    transition={{ type: "spring", stiffness: 300 }}
-                                    className="my-1"
-                                >
-                                    <button
-                                        className={`btn btn-ghost justify-start w-full text-left ${
-                                            activeTab === tab ? `text-${tabColors[tab as keyof typeof tabColors]} font-bold` : "text-base-content"
-                                        }`}
-                                        onClick={() => handleChange(tab)}
-                                    >
-                                        <span className="text-sm">
-                                            0{i + 1}. <span className="font-semibold">{tab}</span>
-                                        </span>
-                                    </button>
-                                </motion.li>
-                            ))}
-                            {/* <motion.li whileHover={{ x: 5 }} className="my-1">
-                                <a
-                                    href="/resume.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn btn-success btn-sm w-full text-left"
-                                >
-                                    <span className="text-sm">📄 <span className="font-semibold">Resume</span></span>
-                                </a>
-                            </motion.li> */}
-                        </ul>
+                {/* Right Side Controls */}
+                <div className="hidden lg:flex items-center gap-4">
+                    <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/5">
+                        <div className="w-2 h-2 rounded-full bg-success animate-pulse shadow-[0_0_8px_#10b981]" />
+                        <span className="text-[11px] font-mono font-extrabold tracking-widest opacity-40 uppercase">Awaits_Input</span>
                     </div>
                 </div>
             </div>

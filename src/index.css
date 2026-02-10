@@ -6,3 +6,16 @@
 p {
   font-family: "Inter", sans-serif;
 }
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.05; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}

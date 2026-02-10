@@ -1,0 +1,38 @@
+{
+  "identification": {
+    "title": "Master's Student in Computer Engineering",
+    "institution": {
+      "name": "Politecnico di Torino",
+      "url": "https://www.polito.it/",
+      "since": "2025"
+    },
+    "bio": "I specialize in Software Engineering with a strong passion for the world of Web Development. My mission is to architect high-performance digital solutions that bridge the gap between complex backend logic and immersive user experiences.",
+    "nodeStatus": {
+      "node": "ANDREI_STN",
+      "auth": "LEVEL_MASTER",
+      "specialization": ["SOFTWARE_ENG", "WEB_DEV", "SYS_ARCH"]
+    }
+  },
+  "skills": {
+    "languages": ["C", "C++", "Java", "Python", "JavaScript", "TypeScript", "SQL", "Bash"],
+    "frontend": ["React", "HTML5", "CSS3", "TailwindCSS", "DaisyUI"],
+    "backend": ["Node.js", "Express", "SQLAlchemy", "ORM"],
+    "tools": ["Docker", "Git", "Vite", "Socket.IO", "Npm"]
+  },
+  "timeline": [
+    {
+      "title": "MASTER'S IN SOFTWARE ENGINEERING",
+      "institution": "Politecnico di Torino",
+      "period": "2025 - Present",
+      "description": "Focusing on advanced software engineering principles, modern web architectures, and scalable system design.",
+      "current": true
+    },
+    {
+      "title": "BACHELOR'S IN COMPUTER SCIENCE",
+      "institution": "University of Catania",
+      "period": "July 25, 2025",
+      "description": "Focused on high-performance algorithm design, system complexity, and software engineering foundations.",
+      "current": false
+    }
+  ]
+}

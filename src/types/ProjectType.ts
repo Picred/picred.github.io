@@ -4,4 +4,6 @@ export type ProjectType = {
     techStack: string;
     link?: string;
     imgUrl?: string | undefined;
+    category?: string;
+    id?: string;
 }
