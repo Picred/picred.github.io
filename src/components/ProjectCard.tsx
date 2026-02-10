@@ -76,11 +76,17 @@ export const ProjectCard = ({ title, description, techStack, link, imgUrl, id }:
                 className="w-full flex flex-col items-center group/btn"
               >
                 <span className="font-mono text-[11px] font-bold opacity-30 group-hover/btn:opacity-100 group-hover/btn:text-primary transition-all mb-1.5">[ACCESS_NODE]</span>
-                <div className="w-full py-4 bg-primary text-primary-content font-black uppercase text-xs rounded-xl shadow-lg shadow-primary/20 tracking-[0.2em] transition-all flex items-center justify-center gap-3">
-                    <span>Explore_Project</span>
-                    <svg className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-full px-10 py-5 bg-[#ff0000] text-white rounded-2xl font-black uppercase text-md shadow-[0_0_30px_rgba(255,0,0,0.4)] relative overflow-hidden group/btn-inner flex items-center justify-center gap-3">
+                    <span className="relative z-10 tracking-[0.2em]">Source</span>
+                    <svg className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
+                    <motion.div 
+                      initial={{ x: "-100%" }}
+                      whileHover={{ x: "0%" }}
+                      className="absolute inset-0 bg-white/20"
+                      transition={{ duration: 0.3 }}
+                    />
                 </div>
               </motion.button>
             )}
