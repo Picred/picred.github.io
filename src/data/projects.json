@@ -21,7 +21,7 @@
             "description": "A full-stack cinema management platform featuring secure authentication and an integrated booking system. Cineaura enables real-time movie discovery, showtime management, and seamless seat reservation.",
             "link": "https://github.com/Picred/cineaura",
             "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
-            "imgUrl": "",
+            "imgUrl": "https://github.com/Picred/cineaura/blob/main/public/cineaura-homepage.png?raw=true",
             "category": "Web"
         },
         {
