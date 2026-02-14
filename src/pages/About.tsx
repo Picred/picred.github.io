@@ -66,22 +66,52 @@ export const About = () => {
                 {/* 02 // CAPABILITIES */}
                 <ReportSection title="CORE_CAPABILITIES" id="02">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                        {Object.entries(skills).map(([category, items]) => (
-                            <div key={category} className="space-y-6">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-1 h-3 bg-primary/40" />
-                                    <h3 className="font-mono text-[11px] font-black uppercase opacity-30 tracking-[0.5em]">_{category}</h3>
-                                </div>
-                                <div className="flex flex-col gap-3">
-                                    {items.map(item => (
-                                        <div key={item} className="flex items-center gap-4 group cursor-default">
-                                            <div className="w-1 h-1 rounded-full bg-white/10 group-hover:bg-primary group-hover:scale-150 transition-all" />
-                                            <span className="text-base font-bold tracking-tight opacity-50 group-hover:opacity-100 group-hover:text-white transition-all uppercase">{item}</span>
+                        {Object.entries(skills).map(([category, items]) => {
+                            const iconMap: { [key: string]: React.ReactNode } = {
+                                languages: (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                ),
+                                frontend: (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                ),
+                                backend: (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                                    </svg>
+                                ),
+                                tools: (
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                )
+                            };
+                            return (
+                                <div key={category} className="space-y-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-1 h-3 bg-primary/40" />
+                                        <div className="flex items-center gap-2 opacity-30 group-hover:opacity-100 transition-opacity">
+                                            {iconMap[category.toLowerCase()]}
+                                            <h3 className="font-mono text-[11px] font-black uppercase tracking-[0.5em]">_{category}</h3>
                                         </div>
-                                    ))}
+                                    </div>
+                                    <div className="flex flex-col gap-3">
+                                        {items.map(item => (
+                                            <div key={item} className="flex items-center gap-3 group cursor-default">
+                                                <span className="font-mono text-[10px] text-primary/40 group-hover:text-primary transition-colors">
+                                                    &gt;
+                                                </span>
+                                                <span className="text-base font-bold tracking-tight opacity-50 group-hover:opacity-100 group-hover:text-white transition-all uppercase">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </ReportSection>
 
@@ -103,24 +133,23 @@ export const About = () => {
                                             className="space-y-4"
                                         >
                                             <div className={`inline-block px-4 py-1 rounded-full border border-primary/20 bg-primary/5 font-mono text-[10px] uppercase tracking-[0.3em] font-black
-                                                ${item.current ? "text-primary border-primary/40 animate-pulse" : "text-white/40"}`}>
+                                                ${item.current ? "text-primary border-primary/40 animate-pulse" : "text-white/60"}`}>
                                                 {item.period}
                                             </div>
                                             <h3 className={`text-2xl sm:text-4xl font-black tracking-tighter uppercase leading-none
-                                                ${item.current ? "text-white" : "text-white/50"}`}>
+                                                ${item.current ? "text-white" : "text-white/80"}`}>
                                                 {item.title}
                                             </h3>
-                                            <p className="text-[#ff0000] font-mono text-[11px] font-bold tracking-[0.2em] opacity-60">
+                                            <p className="text-[#ff0000] font-mono text-[14px] font-bold tracking-[0.2em]">
                                                 {item.institution}
                                             </p>
-                                            <div className={`p-6 bg-white/5 rounded-2xl border border-white/5 inline-block backdrop-blur-md relative group
-                                                ${item.current ? 'border-primary/20 ring-1 ring-primary/5' : ''}`}>
+                                            <div className={`p-6 bg-white/5 rounded-2xl border ${item.current ? 'border-primary/20 ring-1 ring-primary/5' : 'border-white/10'} inline-block backdrop-blur-md relative group`}>
                                                 <div className="absolute top-0 right-0 p-2 opacity-10">
                                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                                                     </svg>
                                                 </div>
-                                                <p className="text-base-content/60 text-sm font-light italic leading-relaxed">
+                                                <p className={`text-sm font-medium leading-relaxed ${item.current ? "text-base-content/80 font-light italic" : "text-base-content/90"}`}>
                                                     "{item.description}"
                                                 </p>
                                             </div>

@@ -82,8 +82,8 @@ export const Home = () => {
               </div>
               
               <p className="text-xl sm:text-2xl lg:text-3xl font-light leading-relaxed max-w-xl">
-                Transforming complex logic into <span className="text-primary font-bold">high-performance</span> digital experiences. 
-                I build systems that don't just work—they <span className="text-[#ff0000] font-bold">scale</span> and <span className="text-primary font-bold">inspire</span>.
+                Engineering <span className="text-primary font-bold">high-performance</span> digital experiences from complex logic. 
+                I build scalable systems that merge <span className="text-[#ff0000] font-bold">technical precision</span> with intuitive design.
               </p>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-6">

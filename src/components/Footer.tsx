@@ -76,10 +76,6 @@ export const Footer = () => {
                 </div>
             </div>
 
-            {/* Aesthetic Tagline */}
-            <div className="relative pt-8 border-t border-white/5 w-full text-center">
-                 <p className="text-[11px] font-mono opacity-30 uppercase tracking-[1em] font-bold">Transforming complex problems into elegant solutions</p>
-            </div>
         </footer>
     );
 };

@@ -2,23 +2,23 @@
     "projects": [
         {
             "name": "EzShop [2026]",
-            "description": "EZShop is a retail management system designed to handle the end-to-end operations of a small to medium-sized shop, integrating user management, inventory control, sales, orders, and accounting functions into a single platform. EZShop defines a set of business operations that orchestrates user interactions, product lifecycle, and financial transactions.",
+            "description": "EZShop is a retail management system designed to handle the end-to-end operations of a small to medium-sized shop, integrating user management, inventory control, sales, orders, and accounting functions into a single platform. EZShop orchestrates comprehensive business operations, from inventory management to financial transactions.",
             "link": "https://github.com/Picred/EzShop",
             "techStack": "Python, ORM, SQLAlchemy, 3-Layer-Architecture",
-            "imgUrl": "",
+            "imgUrl": "https://github.com/Picred/EZShop/blob/main/frontend/public/ezshop-dashboard.jpg?raw=true",
             "category": "Software"
         },
         {
             "name": "Maze Navigation Problem [2025]",
-            "description": "My thesis, 'Analysis of Optimal Navigation Strategies for Autonomous Exploration in Unknown Environments', studies how autonomous agents navigate mazes using strategies like Random Walk, Wall Follower, Tremaux, and Adaptive Walk. Simulations show Adaptive Walk excels in efficiency and success, with applications in robotics, autonomous vehicles, and multi-agent exploration systems.",
+            "description": "My thesis, 'Analysis of Optimal Navigation Strategies for Autonomous Exploration in Unknown Environments', researches autonomous navigation through strategies like Random Walk, Wall Follower, Tremaux, and Adaptive Walk. Simulations demonstrate that Adaptive Walk excels in efficiency and success, with critical applications in robotics and multi-agent systems.",
             "link": "https://github.com/Picred/maze-navigation",
             "techStack": "Python, AI, Autonomous Agents, Numpy",
-            "imgUrl": "",
+            "imgUrl": "mazes.png",
             "category": "AI"
         },
         {
             "name": "Cineaura [2024]",
-            "description": "A full-stack website for managing cinemas, featuring an authentication and booking system. The Cineaura website offers several features, including:\nUser Authentication for users/admins. Ticket Booking with selection of available movies (on DB) and showtimes.",
+            "description": "A full-stack cinema management platform featuring secure authentication and an integrated booking system. Cineaura enables real-time movie discovery, showtime management, and seamless seat reservation.",
             "link": "https://github.com/Picred/cineaura",
             "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
             "imgUrl": "",
@@ -26,7 +26,7 @@
         },
         {
             "name": "Granimal [2024]",
-            "description": "Track all your favorite anime, all in one place. Granimal is a platform that allows you to keep track of all your favorite anime. You can also discover new ones and share your thoughts with other users.",
+            "description": "Track all your favorite anime in one place. Granimal allows you to manage your watchlist, discover new titles, and share insights with a global community.",
             "link": "https://github.com/Picred/granimal",
             "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
             "imgUrl": "granimal.jpeg",

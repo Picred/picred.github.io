@@ -21,24 +21,7 @@ export const Navbar = () => {
             <div className="relative flex items-center justify-between w-full max-w-7xl mx-auto">
                 {/* Logo & System ID */}
                 <div className="flex items-center gap-4">
-                    <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-10 h-10 rounded-xl overflow-hidden border border-white/10 cursor-pointer shadow-lg shadow-primary/5 bg-white/5 flex items-center justify-center group/home"
-                        onClick={() => handleChange("Home")}
-                    >
-                        <svg 
-                            viewBox="0 0 24 24" 
-                            className="w-5 h-5 fill-none stroke-current opacity-40 group-hover/home:opacity-100 transition-opacity" 
-                            strokeWidth="2.5" 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round"
-                        >
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                            <polyline points="9 22 9 12 15 12 15 22" />
-                        </svg>
-                    </motion.div>
-                    <div className="hidden md:flex flex-col">
+                    <div className="flex flex-col">
                         <span className="text-[11px] font-black tracking-[0.3em] uppercase opacity-30">System_ID</span>
                         <span className="text-[13px] font-mono font-bold tracking-tighter opacity-70">ANDREI.STN_v2.0</span>
                     </div>

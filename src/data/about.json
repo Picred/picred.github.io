@@ -6,7 +6,7 @@
       "url": "https://www.polito.it/",
       "since": "2025"
     },
-    "bio": "I specialize in Software Engineering with a strong passion for the world of Web Development. My mission is to architect high-performance digital solutions that bridge the gap between complex backend logic and immersive user experiences.",
+    "bio": "Software Engineering student focused on architecting scalable systems and complex logic. I also have a strong interest in Web Development, pursuing it as a passionate secondary focus.",
     "nodeStatus": {
       "node": "ANDREI_STN",
       "auth": "LEVEL_MASTER",
@@ -29,8 +29,8 @@
     },
     {
       "title": "BACHELOR'S IN COMPUTER SCIENCE",
-      "institution": "University of Catania",
-      "period": "July 25, 2025",
+      "institution": "Università di Catania",
+      "period": "2022 - 2025",
       "description": "Focused on high-performance algorithm design, system complexity, and software engineering foundations.",
       "current": false
     }
