@@ -1,0 +1,24 @@
+{
+  "title": "INITIALIZE_CONTACT",
+  "subtitle": "Let's Build Something Together",
+  "description": "Whether you have a project in mind, a question about my work, or just want to connect — I'm always open to new opportunities and collaborations.",
+  "email": "andrei.stefand@outlook.com",
+  "socials": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/picred",
+      "icon": "github",
+      "label": "CODE_REPOSITORY"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://www.linkedin.com/in/andrei-stefan-b1b1b1b1b/",
+      "icon": "linkedin",
+      "label": "PROFESSIONAL_NETWORK"
+    }
+  ],
+  "availability": {
+    "status": "AVAILABLE",
+    "message": "Currently accepting new projects and collaborations"
+  }
+}

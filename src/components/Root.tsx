@@ -3,6 +3,7 @@ import { infoStore } from "../store/infoStore";
 import { Home } from "../pages/Home";
 import { About } from "../pages/About";
 import { Projects } from "../pages/Projects";
+import { Contact } from "../pages/Contact";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { AnimatePresence, motion } from "framer-motion";
@@ -64,6 +65,20 @@ export const Root = () => {
                             className="h-full"
                         >
                             <Projects />
+                        </motion.div>
+                    )}
+
+                    {activeTab === "Contact" && (
+                        <motion.div
+                            key="contact"
+                            variants={pageVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            className="h-full"
+                        >
+                            <Contact />
                         </motion.div>
                     )}
                 </AnimatePresence>
