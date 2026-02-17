@@ -90,7 +90,7 @@ export const Home = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => window.location.href = `mailto:andrei.stefand@outlook.com`}
+                  onClick={() => update("Contact")}
                   className="px-10 py-5 bg-[#ff0000] text-white rounded-2xl font-black uppercase tracking-widest shadow-[0_0_30px_rgba(255,0,0,0.4)] relative overflow-hidden group"
                 >
                   <span className="relative z-10">Initialize_Contact</span>

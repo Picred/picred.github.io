@@ -10,11 +10,10 @@ export const Footer = () => {
                 {/* Brand & Rights */}
                 <div className="flex flex-col gap-2 text-center lg:text-left">
                     <div className="flex items-center gap-3 justify-center lg:justify-start">
-                        <div className="w-2 h-2 rounded-full bg-primary" />
                         <span className="text-base font-black uppercase tracking-[0.4em]">Andrei Stefan</span>
                     </div>
                     <p className="text-[11px] font-mono opacity-40 uppercase tracking-widest font-bold">
-                        © 2026 // Integrated_System_Node
+                        Made with ❤️ 
                     </p>
                 </div>
 

@@ -29,7 +29,6 @@ export const Navbar = () => {
                         whileHover={{ scale: 1.02 }}
                         transition={{ duration: 0.2 }}
                     >
-                        {/* Decorative Icon */}
                         <div className="hidden sm:flex w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-[#ff0000]/20 border border-primary/30 items-center justify-center">
                             <div className="w-5 h-5 border-2 border-primary rounded-sm rotate-45" />
                         </div>
@@ -122,7 +121,7 @@ export const Navbar = () => {
                                 <div className="absolute inset-0 w-2 h-2 rounded-full bg-success animate-ping opacity-75" />
                             </div>
                             <span className="text-[11px] font-mono font-extrabold tracking-widest opacity-50 uppercase">
-                                Online
+                                Last update: {new Date(__BUILD_DATE__).toDateString()}
                             </span>
                         </motion.div>
                     </div>
@@ -274,8 +273,8 @@ export const Navbar = () => {
                                                 <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-success animate-ping" />
                                             </div>
                                             <div>
-                                                <span className="text-[10px] font-mono font-bold tracking-widest text-success uppercase block">System Online</span>
-                                                <span className="text-[9px] font-mono text-success/60">All systems operational</span>
+                                                <span className="text-[10px] font-mono font-bold tracking-widest text-success uppercase block">Online</span>
+                                                <span className="text-[9px] font-mono text-success/60">Last update: {new Date(__BUILD_DATE__).toDateString()}</span>
                                             </div>
                                         </div>
                                     </motion.div>

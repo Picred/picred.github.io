@@ -14,7 +14,7 @@ export const ProjectCard = ({ title, description, techStack, link, imgUrl, id }:
         {/* Subtle Decorative metadata */}
         <div className="absolute top-4 left-4 flex items-center gap-2 opacity-20 group-hover:opacity-60 transition-opacity z-20">
           <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-          <span className="font-mono text-[10px] uppercase font-bold tracking-widest">{id || "NODE_0X"}</span>
+          <span className="font-mono text-[10px] uppercase font-bold tracking-widest">{id || "PROJECT_0X"}</span>
         </div>
 
         {/* Project Image Node */}
@@ -44,9 +44,6 @@ export const ProjectCard = ({ title, description, techStack, link, imgUrl, id }:
             <h2 className="text-2xl lg:text-3xl font-black uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">
               {title}
             </h2>
-            <div className="flex items-center gap-2 opacity-40 font-mono text-[10px] uppercase tracking-widest font-bold">
-                <span className="text-success">●</span> Status: Verified_Node
-            </div>
           </div>
 
           <p className="text-base-content/70 text-sm lg:text-base leading-relaxed font-medium">
@@ -75,7 +72,6 @@ export const ProjectCard = ({ title, description, techStack, link, imgUrl, id }:
                 onClick={() => window.open(link, '_blank')}
                 className="w-full flex flex-col items-center group/btn"
               >
-                <span className="font-mono text-[11px] font-bold opacity-30 group-hover/btn:opacity-100 group-hover/btn:text-primary transition-all mb-1.5">[ACCESS_NODE]</span>
                 <div className="w-full px-10 py-5 bg-[#ff0000] text-white rounded-2xl font-black uppercase text-md shadow-[0_0_30px_rgba(255,0,0,0.4)] relative overflow-hidden group/btn-inner flex items-center justify-center gap-3">
                     <span className="relative z-10 tracking-[0.2em]">Source</span>
                     <svg className="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">

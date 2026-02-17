@@ -6,9 +6,9 @@
       "url": "https://www.polito.it/",
       "since": "2025"
     },
-    "bio": "Software Engineering student focused on architecting scalable systems and complex logic. I also have a strong interest in Web Development, pursuing it as a passionate secondary focus.",
+    "bio": "Computer Software Engineering student focused on architecting scalable systems and complex logic. I also have a strong interest in Web Development, pursuing it as a passionate secondary focus.",
     "nodeStatus": {
-      "node": "ANDREI_STN",
+      "node": "ANDREI",
       "auth": "LEVEL_MASTER",
       "specialization": ["SOFTWARE_ENG", "WEB_DEV", "SYS_ARCH"]
     }
@@ -21,14 +21,14 @@
   },
   "timeline": [
     {
-      "title": "MASTER'S IN SOFTWARE ENGINEERING",
+      "title": "MASTER'S  IN SOFTWARE ENGINEERING",
       "institution": "Politecnico di Torino",
-      "period": "2025 - Present",
+      "period": "2025 - In Progress",
       "description": "Focusing on advanced software engineering principles, modern web architectures, and scalable system design.",
       "current": true
     },
     {
-      "title": "BACHELOR'S IN COMPUTER SCIENCE",
+      "title": "BACHELOR'S DEGREE IN COMPUTER SCIENCE",
       "institution": "Università di Catania",
       "period": "2022 - 2025",
       "description": "Focused on high-performance algorithm design, system complexity, and software engineering foundations.",
