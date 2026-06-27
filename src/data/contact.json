@@ -1,5 +1,5 @@
 {
-  "title": "INITIALIZE_CONTACT",
+  "title": "CONTACT ME",
   "subtitle": "Let's Build Something Together",
   "description": "Whether you have a project in mind, a question about my work, or just want to connect — I'm always open to new opportunities and collaborations.",
   "email": "andrei.stefand@outlook.com",
@@ -12,7 +12,7 @@
     },
     {
       "platform": "LinkedIn",
-      "url": "https://www.linkedin.com/in/andrei-stefan-b1b1b1b1b/",
+      "url": "https://www.linkedin.com/in/andreistefand/",
       "icon": "linkedin",
       "label": "PROFESSIONAL_NETWORK"
     }

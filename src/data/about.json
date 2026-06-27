@@ -15,13 +15,13 @@
   },
   "skills": {
     "languages": ["C", "C++", "Java", "Python", "JavaScript", "TypeScript", "SQL", "Bash"],
-    "frontend": ["React", "HTML5", "CSS3", "TailwindCSS", "DaisyUI"],
+    "frontend": ["React", "HTML5", "CSS3", "TailwindCSS", "DaisyUI", "Bootstrap"],
     "backend": ["Node.js", "Express", "SQLAlchemy", "ORM"],
-    "tools": ["Docker", "Git", "Vite", "Socket.IO", "Npm"]
+    "tools": ["Docker", "Git", "Vite", "Socket.IO"]
   },
   "timeline": [
     {
-      "title": "MASTER'S  IN SOFTWARE ENGINEERING",
+      "title": "MASTER'S IN SOFTWARE ENGINEERING",
       "institution": "Politecnico di Torino",
       "period": "2025 - In Progress",
       "description": "Focusing on advanced software engineering principles, modern web architectures, and scalable system design.",
@@ -31,7 +31,7 @@
       "title": "BACHELOR'S DEGREE IN COMPUTER SCIENCE",
       "institution": "Università di Catania",
       "period": "2022 - 2025",
-      "description": "Focused on high-performance algorithm design, system complexity, and software engineering foundations.",
+      "description": "Focused on high-performance algorithm design, system complexity, and software engineering principles.",
       "current": false
     }
   ]

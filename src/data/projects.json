@@ -1,10 +1,18 @@
 {
     "projects": [
         {
+            "name": "Race the Rails [2026]",
+            "description": "Full-stack client-server SPA. Implements secure REST APIs, local SQLite database storage, essential data validation, and a custom routing validation algorithm for a subway network game.",
+            "link": "https://github.com/Picred/race-the-rails",
+            "techStack": "FullStack, HTML, CSS, Javascript, React, Bootstrap, SQLite3, Vite, Express, Passport",
+            "imgUrl": "https://github.com/Picred/race-the-rails/blob/main/img/planning-phase.png?raw=true",
+            "category": "Software"
+        },
+        {
             "name": "EzShop [2026]",
             "description": "EZShop is a retail management system designed to handle the end-to-end operations of a small to medium-sized shop, integrating user management, inventory control, sales, orders, and accounting functions into a single platform. EZShop orchestrates comprehensive business operations, from inventory management to financial transactions.",
             "link": "https://github.com/Picred/EzShop",
-            "techStack": "Python, ORM, SQLAlchemy, 3-Layer-Architecture",
+            "techStack": "Backend, Python, ORM, SQLAlchemy, 3-Layer-Architecture, API Design, Testing",
             "imgUrl": "https://github.com/Picred/EZShop/blob/main/frontend/public/ezshop-dashboard.jpg?raw=true",
             "category": "Software"
         },
@@ -20,7 +28,7 @@
             "name": "Cineaura [2024]",
             "description": "A full-stack cinema management platform featuring secure authentication and an integrated booking system. Cineaura enables real-time movie discovery, showtime management, and seamless seat reservation.",
             "link": "https://github.com/Picred/cineaura",
-            "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
+            "techStack": "Fullstack, HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
             "imgUrl": "https://github.com/Picred/cineaura/blob/main/public/cineaura-homepage.png?raw=true",
             "category": "Web"
         },
@@ -28,7 +36,7 @@
             "name": "Granimal [2024]",
             "description": "Track all your favorite anime in one place. Granimal allows you to manage your watchlist, discover new titles, and share insights with a global community.",
             "link": "https://github.com/Picred/granimal",
-            "techStack": "HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
+            "techStack": "Fullstack, HTML, CSS, Typescript, React, TailwindCSS, DaisyUI, MySQL, Vite",
             "imgUrl": "granimal.jpeg",
             "category": "Web"
         },
@@ -44,7 +52,7 @@
             "name": "Linux Terminal Simulation [2024]",
             "description": "University project web-based terminal built with HTML, CSS, and JavaScript. Features real-time clock, resizable and closable window, and basic commands like clear, whoami, curl, time, exit, help, and user (to change username). Designed to simulate a lightweight interactive terminal experience in the browser.",
             "link": "https://github.com/Picred/linux-terminal-sim",
-            "techStack": "HTML, CSS, Javascript",
+            "techStack": "Frontend, HTML, CSS, Javascript",
             "imgUrl": "https://github.com/Picred/linux-terminal-sim/blob/main/screenshots/terminal.jpg?raw=true",
             "category": "Web"
         },
@@ -52,7 +60,7 @@
             "name": "Local Chat [2024]",
             "description": "University project built with Express, Socket.IO, and npm. The app allows users to log in and see in real time who else is connected, enabling instant chat within the same network. Designed to demonstrate real-time communication and multi-user interaction.",
             "link": "https://github.com/Picred/local-chat",
-            "techStack": "HTML, CSS, Javascript, Socket.IO, Npm, Express",
+            "techStack": "Frontend, HTML, CSS, Javascript, Socket.IO, Express",
             "imgUrl": "https://github.com/Picred/local-chat/blob/main/screenshots/chat.jpg?raw=true",
             "category": "Web"
         },
@@ -60,7 +68,7 @@
             "name": "Brain Test Quiz Bot [2023]",
             "description": "Brain Test Quiz Bot is a Telegram bot that challenges users' intelligence and cognitive skills through a variety of quizzes and puzzles. It covers grammar, logic, math, and general knowledge, offering three difficulty levels with timers: Easy (10s), Medium (7s), and Hard (5s), providing a fun and engaging learning experience.",
             "link": "https://github.com/Picred/brain-test-bot",
-            "techStack": "Python, Unit Tests",
+            "techStack": "Python, Testing",
             "imgUrl": "",
             "category": "Scripts"
         },
@@ -71,14 +79,6 @@
             "techStack": "MySQL",
             "imgUrl": "",
             "category": "Database"
-        },
-        {
-            "name": "Hangman Game [2022]",
-            "description": "Hangman Game is a Python-based interactive word-guessing game. Users try to reveal a hidden word by selecting letters, with a limited number of lives. The program handles input validation, dynamically updates the word display, and selects random words from a list, offering an engaging command-line gaming experience.",
-            "link": "https://github.com/Picred/hangman-game",
-            "techStack": "Python",
-            "imgUrl": "",
-            "category": "Scripts"
         }
     ]
 }

@@ -82,8 +82,7 @@ export const Home = () => {
               </div>
               
               <p className="text-xl sm:text-2xl lg:text-3xl font-light leading-relaxed max-w-xl">
-                Engineering <span className="text-primary font-bold">high-performance</span> digital experiences from complex logic. 
-                I build scalable systems that merge <span className="text-[#ff0000] font-bold">technical precision</span> with intuitive design.
+                Junior Software Application Engineer dedicated to building <span className="text-[#ff0000] font-bold">functional, clean, and reliable web applications</span>. Bridging academic foundations with hands-on development from database logic to intuitive user interfaces.
               </p>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-6">
@@ -93,7 +92,7 @@ export const Home = () => {
                   onClick={() => update("Contact")}
                   className="px-10 py-5 bg-[#ff0000] text-white rounded-2xl font-black uppercase tracking-widest shadow-[0_0_30px_rgba(255,0,0,0.4)] relative overflow-hidden group"
                 >
-                  <span className="relative z-10">Initialize_Contact</span>
+                  <span className="relative z-10">Contact Me</span>
                   <motion.div 
                     initial={{ x: "-100%" }}
                     whileHover={{ x: "0%" }}
@@ -107,7 +106,7 @@ export const Home = () => {
                   onClick={() => update("Projects")}
                   className="px-10 py-5 bg-white/5 border border-white/10 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-white/10 transition-all backdrop-blur-sm"
                 >
-                  View_Projects
+                  View Projects
                 </motion.button>
               </div>
             </div>
