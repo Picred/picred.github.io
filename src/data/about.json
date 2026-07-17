@@ -1,23 +1,74 @@
 {
   "identification": {
-    "title": "Master's Student in Computer Engineering",
+    "title": "Master's Student in Software Engineering",
     "institution": {
       "name": "Politecnico di Torino",
       "url": "https://www.polito.it/",
       "since": "2025"
     },
-    "bio": "Computer Software Engineering student focused on architecting scalable systems and complex logic. I also have a strong interest in Web Development, pursuing it as a passionate secondary focus.",
-    "nodeStatus": {
-      "node": "ANDREI",
-      "auth": "LEVEL_MASTER",
-      "specialization": ["SOFTWARE_ENG", "WEB_DEV", "SYS_ARCH"]
-    }
+    "bio": "Passionate about building clean, maintainable, and efficient applications. I bridge academic software engineering practices with hands-on development to solve real-world problems.",
+    "languages": [
+      {
+        "flag": "🇮🇹",
+        "name": "Italian",
+        "level": "fluent"
+      },
+      {
+        "flag": "🇬🇧",
+        "name": "English",
+        "level": "B2"
+      },
+      {
+        "flag": "🇷🇴",
+        "name": "Romanian",
+        "level": "native"
+      }
+    ],
+    "softSkills": [
+      "Teamwork & Collaboration",
+      "Problem-solving",
+      "Analytical Thinking",
+      "Adaptabilty",
+      "Flexibility",
+      "Comunication",
+      "Time Management"
+    ]
   },
   "skills": {
-    "languages": ["C", "C++", "Java", "Python", "JavaScript", "TypeScript", "SQL", "Bash"],
-    "frontend": ["React", "HTML5", "CSS3", "TailwindCSS", "DaisyUI", "Bootstrap"],
-    "backend": ["Node.js", "Express", "SQLAlchemy", "ORM"],
-    "tools": ["Docker", "Git", "Vite", "Socket.IO"]
+    "languages": [
+      "Rust",
+      "C",
+      "C++",
+      "Java",
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "SQL",
+      "Bash",
+      "PHP"
+    ],
+    "frontend": [
+      "React",
+      "HTML5",
+      "CSS3",
+      "TailwindCSS",
+      "DaisyUI",
+      "Bootstrap"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "SQLAlchemy",
+      "ORM",
+      "MongoDB",
+      "MySQL"
+    ],
+    "tools": [
+      "Docker",
+      "Git",
+      "Vite",
+      "Socket.IO"
+    ]
   },
   "timeline": [
     {

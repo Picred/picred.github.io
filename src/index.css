@@ -1,21 +1,162 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+/* ─── Font imports ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-p {
-  font-family: "Inter", sans-serif;
+/* ─── Design tokens ────────────────────────────────────────────────────────── */
+/*
+  Single source of truth for every color.
+  To change the accent: edit --primary, --accent, and --ring.
+  Components never hardcode colors — they reference these vars via Tailwind.
+*/
+@layer base {
+  :root {
+    /* Backgrounds — dark navy scale */
+    --background:    216 28% 8%;
+    --bg-void:       216 43% 3%;
+    --bg-base:       216 28% 8%;
+    --bg-surface:    215 25% 11%;
+    --bg-elevated:   215 20% 15%;
+
+    /* Text scale */
+    --foreground:         210 25% 93%;
+    --text-hi:            0 0% 100%;
+    --text-primary:       210 25% 93%;
+    --text-secondary:     215 12% 65%;
+    --text-muted:         215 10% 52%;
+
+    /* Red accent — the only accent color */
+    --primary:            0 88% 62%;
+    --primary-foreground: 0 0% 100%;
+    --accent:             0 88% 62%;
+    --accent-foreground:  0 0% 100%;
+    --accent-dim:         0 88% 62% / 0.08;
+    --accent-mid:         0 88% 62% / 0.15;
+    --ring:               0 88% 62%;
+
+    /* Surface & secondary (not accent) */
+    --secondary:           215 20% 15%;
+    --secondary-foreground: 210 25% 93%;
+    --muted:               215 20% 15%;
+    --muted-foreground:    215 14% 55%;
+    --card:                215 25% 11%;
+    --card-foreground:     210 25% 93%;
+    --popover:             215 25% 11%;
+    --popover-foreground:  210 25% 93%;
+
+    /* Borders */
+    --border:      217 20% 18%;
+    --border-dim:  218 22% 13%;
+    --border-soft: 215 15% 22%;
+    --border-main: 215 10% 30%;
+    --input:       215 15% 22%;
+
+    /* Semantic */
+    --destructive:            0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --green:  130 44% 49%;
+    --gold:   43 72% 58%;
+
+    /* Shape */
+    --radius: 0.75rem;
+  }
 }
 
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.03; }
-  50% { opacity: 0.05; }
+/* ─── Base styles ──────────────────────────────────────────────────────────── */
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Outfit', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* ─── Font utilities ───────────────────────────────────────────────────────── */
+.font-syne      { font-family: 'Syne', sans-serif; }
+.font-dm-mono   { font-family: 'DM Mono', monospace; }
+.font-outfit    { font-family: 'Outfit', sans-serif; }
+.font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+
+/* ─── Cursor blink (used in TypeWriter and ContactSection) ─────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: hsl(var(--primary));
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
 }
 
-.preserve-3d {
-  transform-style: preserve-3d;
+/* ─── Gold shimmer (used for 110/110 badge) ────────────────────────────────── */
+@keyframes gold-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--gold)) 0%,
+    hsl(43 90% 75%) 25%,
+    hsl(var(--gold)) 50%,
+    hsl(43 90% 75%) 75%,
+    hsl(var(--gold)) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 4s linear infinite;
+}
+
+/* ─── CountUp glow (fires once after animation completes) ──────────────────── */
+@keyframes stat-glow {
+  0%, 100% { text-shadow: none; }
+  50%       { text-shadow: 0 0 8px hsl(var(--primary) / 0.4); }
+}
+.animate-stat-glow { animation: stat-glow 2s ease-in-out 1; }
+
+/* ─── Shooting stars (mobile fallback for SpaceCanvas) ─────────────────────── */
+@keyframes shooting-star-1 {
+  0%   { transform: translate(100vw, -10px) rotate(-35deg); opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 0.6; }
+  100% { transform: translate(-20vw, 60vh) rotate(-35deg); opacity: 0; }
+}
+@keyframes shooting-star-2 {
+  0%   { transform: translate(80vw, -20px) rotate(-40deg); opacity: 0; }
+  15%  { opacity: 0.8; }
+  60%  { opacity: 0.4; }
+  100% { transform: translate(-30vw, 50vh) rotate(-40deg); opacity: 0; }
+}
+.shooting-stars-mobile::before,
+.shooting-stars-mobile::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, hsl(var(--primary) / 0.8), transparent);
+  pointer-events: none;
+}
+.shooting-stars-mobile::before {
+  top: 20%;
+  animation: shooting-star-1 4s ease-in-out 2s infinite;
+}
+.shooting-stars-mobile::after {
+  top: 40%;
+  animation: shooting-star-2 5s ease-in-out 4.5s infinite;
+}
+
+/* ─── Focus visible ─────────────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
 }

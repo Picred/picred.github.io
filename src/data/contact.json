@@ -6,19 +6,11 @@
   "socials": [
     {
       "platform": "GitHub",
-      "url": "https://github.com/picred",
-      "icon": "github",
-      "label": "CODE_REPOSITORY"
+      "url": "https://github.com/picred"
     },
     {
       "platform": "LinkedIn",
-      "url": "https://www.linkedin.com/in/andreistefand/",
-      "icon": "linkedin",
-      "label": "PROFESSIONAL_NETWORK"
+      "url": "https://linkedin.com/in/andreistefand/"
     }
-  ],
-  "availability": {
-    "status": "AVAILABLE",
-    "message": "Currently accepting new projects and collaborations"
-  }
+  ]
 }

@@ -1,14 +1,38 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { Root } from "./components/Root";
+import { Navbar } from "./components/Navbar";
+import { HeroSection } from "./components/HeroSection";
+import { AboutSection } from "./components/AboutSection";
+import { SkillsSection } from "./components/SkillsSection";
+import { ProjectsSection } from "./components/ProjectsSection";
+import { ExperienceSection } from "./components/ExperienceSection";
+import { EducationSection } from "./components/EducationSection";
+import { ContactSection } from "./components/ContactSection";
+import { Footer } from "./components/Footer";
 import "./index.css";
-import { Snowfall } from "react-snowfall";
 
-const currentMonth = new Date().getMonth();
-const isWinterSeason = currentMonth === 11 || currentMonth === 0;
+// Single-page scroll layout — no router needed.
+// Section order matches the Navbar link order.
+function App() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <EducationSection />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
 createRoot(document.getElementById("root")!).render(
-    <StrictMode>
-        {isWinterSeason && <Snowfall color="#dee4fd" />}
-        <Root />
-    </StrictMode>
+  <StrictMode>
+    <App />
+  </StrictMode>
 );

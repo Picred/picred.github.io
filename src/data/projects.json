@@ -70,7 +70,7 @@
             "link": "https://github.com/Picred/brain-test-bot",
             "techStack": "Python, Testing",
             "imgUrl": "",
-            "category": "Scripts"
+            "category": "Software"
         },
         {
             "name": "Database Cinema System [2023]",
@@ -78,7 +78,7 @@
             "link": "https://github.com/Picred/cinema-database",
             "techStack": "MySQL",
             "imgUrl": "",
-            "category": "Database"
+            "category": "Design"
         }
     ]
 }
