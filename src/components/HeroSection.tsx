@@ -17,8 +17,6 @@ interface ShootingStar {
   life: number; maxLife: number; length: number;
 }
 
-// ─── Space canvas (desktop only, auto-disabled on touch devices) ──────────────
-
 function SpaceCanvas({ scrollY }: { scrollY: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -170,8 +168,6 @@ function SpaceCanvas({ scrollY }: { scrollY: number }) {
     />
   );
 }
-
-// ─── Name line animation variants ────────────────────────────────────────────
 
 const nameLineVariants = {
   hidden: { clipPath: "inset(0 100% 0 0)", opacity: 0 },

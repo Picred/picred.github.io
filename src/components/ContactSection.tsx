@@ -3,7 +3,6 @@ import { MotionSection } from "./MotionSection";
 import TypeWriter from "./TypeWriter";
 import contactData from "../data/contact.json";
 
-// Build the contacts list from the JSON data
 const CONTACTS = [
   { label: "mail", value: contactData.email, href: `mailto:${contactData.email}` },
   ...contactData.socials.map((social) => ({

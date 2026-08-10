@@ -21,7 +21,6 @@ export function EducationSection() {
   );
 }
 
-// ─── Sub-component ────────────────────────────────────────────────────────────
 
 type TimelineEntry = (typeof timeline)[number];
 
@@ -41,7 +40,7 @@ function EducationCard({ entry }: { entry: TimelineEntry }) {
           <span className="font-dm-mono text-xs text-green">Currently enrolled</span>
         </div>
       ) : (
-        /* 110/110 badge for completed degree */
+
         <motion.p
           className="font-syne font-bold mb-1 gold-shimmer"
           style={{ fontSize: "2rem" }}

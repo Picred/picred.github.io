@@ -4,9 +4,6 @@ import aboutData from "../data/about.json";
 
 const { identification } = aboutData;
 const { softSkills, languages } = identification;
-// const { languages } = identification;
-
-// Soft skills list — data that doesn't belong in a domain JSON
 
 function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -54,7 +51,7 @@ export function AboutSection() {
           </Card>
         </StaggerItem>
 
-        {/* Education status — sourced from about.json */}
+        {/* Education status */}
         <StaggerItem>
           <Card>
             <div className="flex items-center gap-2 mb-2">

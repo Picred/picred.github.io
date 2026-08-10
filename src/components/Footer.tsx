@@ -12,9 +12,9 @@ export function Footer() {
       transition={{ duration: 0.5 }}
     >
       <p className="font-dm-mono text-xs text-text-muted">
-        Made with ❤️ by Andrei Stefan · Last Update: {new Date().toDateString()}
+        Made with ❤️ by Andrei Stefan · Last Update: {new Date(__BUILD_DATE__).toDateString()}
       </p>
-      
+
       <motion.button
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.95 }}

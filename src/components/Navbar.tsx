@@ -3,12 +3,12 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "Home",       href: "#hero" },
-  { label: "About",      href: "#about" },
-  { label: "Skills",     href: "#skills" },
-  { label: "Projects",   href: "#projects" },
+  { label: "Home", href: "#hero" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Contact",    href: "#contact", dot: true },
+  { label: "Contact", href: "#contact", dot: true },
 ];
 
 function scrollTo(href: string) {

@@ -36,7 +36,7 @@ export function ExperienceSection() {
       </h2>
 
       <div className="relative pl-8 border-l border-border-soft space-y-12">
-        {/* Animated progress line */}
+        {/* progress line */}
         <motion.div
           className="absolute left-[-1px] top-0 w-[2px] bg-primary/40"
           initial={{ height: 0 }}
@@ -53,7 +53,6 @@ export function ExperienceSection() {
   );
 }
 
-// ─── Sub-component ────────────────────────────────────────────────────────────
 
 type Experience = (typeof EXPERIENCES)[number];
 

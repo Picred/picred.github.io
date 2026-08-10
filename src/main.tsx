@@ -11,8 +11,6 @@ import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import "./index.css";
 
-// Single-page scroll layout — no router needed.
-// Section order matches the Navbar link order.
 function App() {
   return (
     <>
